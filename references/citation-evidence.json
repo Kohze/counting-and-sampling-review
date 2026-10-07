@@ -1,0 +1,1557 @@
+{
+  "schema_version": 1,
+  "evidence_date": "2026-10-07",
+  "paper": "main.tex",
+  "source_sha256": "1f3ed4e4b5492977a98fc4ec8277af218889f88a809cf73343b7e1e96064e2f4",
+  "source_bytes": 60532,
+  "audit_type": "AI-assisted bibliographic identity and cited-result scope assessment",
+  "method": "Primary publisher records, original papers and author-hosted texts or publication records, versioned arXiv metadata/content, official software documentation, and commit-pinned repository files. Publisher-deposited metadata provides corroboration. The ledger records the source statements and restrictions used in the review.",
+  "scope": "Source identity, metadata, cited roles and documented statement scope. Full source-proof certification is a distinct form of evidence.",
+  "counts": {
+    "bibliography_entries": 39,
+    "distinct_cited_entries": 39,
+    "published_scholarly_works": 22,
+    "external_research_preprints": 4,
+    "repository_research_preprints": 6,
+    "research_works_total": 32,
+    "independent_of_release_scholarly_works": 26,
+    "repository_documentation": 6,
+    "software_documentation": 1,
+    "documentation_total": 7,
+    "repository_references_total": 12
+  },
+  "release_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "access_qualifications": [
+    "Crossref returned HTTP429 for ALOV2024 and BH2020; original Annals pages supplied full relevant metadata.",
+    "AOV Project Euclid page returned non-text iframe; the author’s publication-list PDF supplied journal pages, versioned author arXiv supplied the common-base claim.",
+    "Some publisher DOI/landing URLs intermittently returned internal errors or sparse text: ACM Dyer, IEEE Gopalan, CUP Greenhill, some Elsevier/Wiley variants. Original papers/author records and deposited metadata supplied the missing fields; the ledger identifies each source type."
+  ],
+  "entries": [
+    {
+      "number": 1,
+      "key": "release",
+      "category": "repository_documentation",
+      "bibliography_tex": "OpenAI.\n\\emph{OpenAI mathematics release: repository README}.\n2026.\n\\repourl{README.md}{Frozen repository snapshot}, accessed 7 October 2026.",
+      "metadata": {
+        "title": "Readme",
+        "corporate_attribution": "OpenAI",
+        "year": 2026,
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "access_date": "2026-10-07",
+        "doi": null,
+        "venue": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/README.md",
+          "kind": "pinned original repository documentation",
+          "sha256": "af984f110f6583ba57ec1af907dc989bfce86713161e9c8b0543b052a138ff64",
+          "locator": "# Readme; ## Navigating the collection; ### Reasoning summaries; ## How the results were produced; ## Versions and citations"
+        }
+      ],
+      "review_role": "Repository provenance, manuscript-specific citation instructions and distinction between manuscript dates and public release.",
+      "source_statement_scope": "Pinned README confirms collection structure and versions/citations. Administrative verification states are not theorem verdicts.",
+      "limitations": [
+        "Current bibliography uses an explanatory descriptive label, not necessarily the literal Markdown heading. This is identifiable documentation, not a scholarly publication."
+      ]
+    },
+    {
+      "number": 2,
+      "key": "oaiMatching",
+      "category": "repository_research_preprint",
+      "bibliography_tex": "OpenAI.\n\\emph{A Fully Polynomial Randomized Approximation Scheme for Perfect Matchings in General Graphs}.\nOpenAI Math Release preprint, 23 September 2026.\n\\repourl{preprints/A-Fully-Polynomial-Randomized-Approximation-Scheme-for-Perfect-Matchings-in-General-Graphs-September-23-2026/main.pdf}{Frozen manuscript}.",
+      "metadata": {
+        "title": "A Fully Polynomial Randomized Approximation Scheme for Perfect Matchings in General Graphs",
+        "authors": [
+          "OpenAI"
+        ],
+        "year": 2026,
+        "printed_date": "2026-09-23",
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "venue": "OpenAI Math Release preprint",
+        "pages": 45,
+        "doi": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-Fully-Polynomial-Randomized-Approximation-Scheme-for-Perfect-Matchings-in-General-Graphs-September-23-2026/main.pdf",
+          "kind": "pinned original manuscript PDF",
+          "sha256": "1510b15725ee7e92a6c543484c6c02ce7f26347a32c1a11cd66c5890b94c6de1",
+          "locator": "printed title page plus cited theorem/sections audited in preceding referee rounds"
+        }
+      ],
+      "review_role": "Unweighted perfect matchings in arbitrary finite simple undirected graphs; exact zero if infeasible; FPRAS with per-tape polynomial bit work.",
+      "source_statement_scope": "Theorem 1.1 and Section 1.2; multi-coordinate lifted matching law. Not a blanket claim for arbitrary weighted partition functions.",
+      "limitations": [
+        "Source claim verified as stated; mathematical truth/complete formal dependency chain not independently certified. Printed manuscript date is not public priority."
+      ]
+    },
+    {
+      "number": 3,
+      "key": "oaiBases",
+      "category": "repository_research_preprint",
+      "bibliography_tex": "OpenAI.\n\\emph{Approximate counting of common bases of two matroids}.\nOpenAI Math Release preprint, 23 September 2026.\n\\repourl{preprints/Approximate-counting-of-common-bases-of-two-matroids-September-23-2026/main.pdf}{Frozen manuscript}.",
+      "metadata": {
+        "title": "Approximate counting of common bases of two matroids",
+        "authors": [
+          "OpenAI"
+        ],
+        "year": 2026,
+        "printed_date": "2026-09-23",
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "venue": "OpenAI Math Release preprint",
+        "pages": 26,
+        "doi": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Approximate-counting-of-common-bases-of-two-matroids-September-23-2026/main.pdf",
+          "kind": "pinned original manuscript PDF",
+          "sha256": "7ed3dfdefcfa677a2b06e7fcde5efefc1a26d3ff774a4b604166e21082ac2607",
+          "locator": "printed title page plus cited theorem/sections audited in preceding referee rounds"
+        }
+      ],
+      "review_role": "Equal-rank common bases of two matroids supplied by exact independence oracles; polynomial oracle calls and outside-oracle bit work on every tape.",
+      "source_statement_scope": "Theorem 1.1 and introductory proof strategy; paired encoding and quadratic transport.",
+      "limitations": [
+        "Source claim verified as stated; mathematical truth/complete formal dependency chain not independently certified. Printed manuscript date is not public priority."
+      ]
+    },
+    {
+      "number": 4,
+      "key": "oaiPolymatroids",
+      "category": "repository_research_preprint",
+      "bibliography_tex": "OpenAI.\n\\emph{An FPRAS for Common Integer Polymatroid Bases with Binary Capacities}.\nOpenAI Math Release preprint, 5 October 2026.\n\\repourl{preprints/An-FPRAS-for-Common-Integer-Polymatroid-Bases-with-Binary-Capacities-October-5-2026/polymatroid-fpras.pdf}{Frozen manuscript}.",
+      "metadata": {
+        "title": "An FPRAS for Common Integer Polymatroid Bases with Binary Capacities",
+        "authors": [
+          "OpenAI"
+        ],
+        "year": 2026,
+        "printed_date": "2026-10-05",
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "venue": "OpenAI Math Release preprint",
+        "pages": 42,
+        "doi": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/An-FPRAS-for-Common-Integer-Polymatroid-Bases-with-Binary-Capacities-October-5-2026/polymatroid-fpras.pdf",
+          "kind": "pinned original manuscript PDF",
+          "sha256": "c14d087890444879a1ff0d492e8cfc3fdb976af562c966ee5c5bd3c3e2ade2e8",
+          "locator": "printed title page plus cited theorem/sections audited in preceding referee rounds"
+        }
+      ],
+      "review_role": "Common integer bases, weight one per vector, binary capacities and exact rank-value oracles; avoids unary labelled expansion.",
+      "source_statement_scope": "Theorem 1.1; polynomial outside-oracle bit work; source does not charge oracle internals as free practical computation.",
+      "limitations": [
+        "Source claim verified as stated; mathematical truth/complete formal dependency chain not independently certified. Printed manuscript date is not public priority."
+      ]
+    },
+    {
+      "number": 5,
+      "key": "oaiBoundedTables",
+      "category": "repository_research_preprint",
+      "bibliography_tex": "OpenAI.\n\\emph{An FPRAS for Cell-Bounded Contingency Tables}.\nOpenAI Math Release preprint, 24 September 2026.\n\\repourl{preprints/An-FPRAS-for-Cell-Bounded-Contingency-Tables-September-24-2026/main.pdf}{Frozen manuscript}.",
+      "metadata": {
+        "title": "An FPRAS for Cell-Bounded Contingency Tables",
+        "authors": [
+          "OpenAI"
+        ],
+        "year": 2026,
+        "printed_date": "2026-09-24",
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "venue": "OpenAI Math Release preprint",
+        "pages": 47,
+        "doi": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/An-FPRAS-for-Cell-Bounded-Contingency-Tables-September-24-2026/main.pdf",
+          "kind": "pinned original manuscript PDF",
+          "sha256": "10bad4277d11b9d1c69842fd8e9028c67edb9ebce6092ad6332703975c8fd7e7",
+          "locator": "printed title page plus cited theorem/sections audited in preceding referee rounds"
+        }
+      ],
+      "review_role": "Arbitrary cell bounds including zero, binary numerical data, both dimensions varying; bounded-time approximate generation in Section 8.",
+      "source_statement_scope": "Theorem 1.1 and Sections 1.2, 4–8. Binary-depth self-reduction is credited to source Section 8 and classical JVV, not presented as novel.",
+      "limitations": [
+        "Source claim verified as stated; mathematical truth/complete formal dependency chain not independently certified. Printed manuscript date is not public priority."
+      ]
+    },
+    {
+      "number": 6,
+      "key": "oaiTables",
+      "category": "repository_research_preprint",
+      "bibliography_tex": "OpenAI.\n\\emph{Exact Uniform Sampling of Contingency Tables with Arbitrary Margins}.\nOpenAI Math Release preprint, 24 September 2026.\n\\repourl{preprints/Exact-Uniform-Sampling-of-Contingency-Tables-with-Arbitrary-Margins-September-24-2026/main.pdf}{Frozen manuscript}.",
+      "metadata": {
+        "title": "Exact Uniform Sampling of Contingency Tables with Arbitrary Margins",
+        "authors": [
+          "OpenAI"
+        ],
+        "year": 2026,
+        "printed_date": "2026-09-24",
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "venue": "OpenAI Math Release preprint",
+        "pages": 31,
+        "doi": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Exact-Uniform-Sampling-of-Contingency-Tables-with-Arbitrary-Margins-September-24-2026/main.pdf",
+          "kind": "pinned original manuscript PDF",
+          "sha256": "be1d677ab515ceb23e7ee9fd369d705345ec0c9254585ac96ded3aa97732cd89",
+          "locator": "printed title page plus cited theorem/sections audited in preceding referee rounds"
+        }
+      ],
+      "review_role": "Exact unrestricted-table sampling in expected polynomial bit time; bounded approximation TV <= 2^-k.",
+      "source_statement_scope": "Theorems 1.1 and 6.4, Sections 6.2–6.4. Transition budget d^200(k+b)^2 is per trial; total includes d^4(k+1) trials and exact-law correction cost. Cell bounds excluded.",
+      "limitations": [
+        "Source claim verified as stated; mathematical truth/complete formal dependency chain not independently certified. Printed manuscript date is not public priority."
+      ]
+    },
+    {
+      "number": 7,
+      "key": "oaiSwitch",
+      "category": "repository_research_preprint",
+      "bibliography_tex": "OpenAI.\n\\emph{Polynomial mixing of the switch chain for every graphical degree sequence}.\nOpenAI Math Release preprint, 25 September 2026.\n\\repourl{preprints/Polynomial-Mixing-of-the-Switch-Chain-for-Every-Graphical-Degree-Sequence-September-25-2026/main.pdf}{Frozen manuscript}.",
+      "metadata": {
+        "title": "Polynomial mixing of the switch chain for every graphical degree sequence",
+        "authors": [
+          "OpenAI"
+        ],
+        "year": 2026,
+        "printed_date": "2026-09-25",
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "venue": "OpenAI Math Release preprint",
+        "pages": 22,
+        "doi": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Polynomial-Mixing-of-the-Switch-Chain-for-Every-Graphical-Degree-Sequence-September-25-2026/main.pdf",
+          "kind": "pinned original manuscript PDF",
+          "sha256": "e70eab92c1315e6706eea3613e9826871e009d1ef8de31f82d5750d026240af3",
+          "locator": "printed title page plus cited theorem/sections audited in preceding referee rounds"
+        }
+      ],
+      "review_role": "Lazy four-vertex simple-undirected chain: t_mix(1/4)<=2n^8, n>=4; separate expected-time exact sampler.",
+      "source_statement_scope": "Theorem 1.1 and Corollary 1.2. Holds/rejected proposals counted; gap >= 1/(24n^2 choose(n,4)) for nontrivial state space.",
+      "limitations": [
+        "Source claim verified as stated; mathematical truth/complete formal dependency chain not independently certified. Printed manuscript date is not public priority."
+      ]
+    },
+    {
+      "number": 8,
+      "key": "scope113",
+      "category": "repository_documentation",
+      "bibliography_tex": "OpenAI.\n\\emph{Approximate counting and entropy of perfect matchings: Lean formalization scope}.\n2026.\n\\repourl{lean/docs/113.md}{Family 113 scope document}, accessed 7 October 2026.",
+      "metadata": {
+        "title": "Approximate counting and entropy of perfect matchings",
+        "corporate_attribution": "OpenAI",
+        "year": 2026,
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "access_date": "2026-10-07",
+        "doi": null,
+        "venue": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/113.md",
+          "kind": "pinned original repository documentation",
+          "sha256": "988234abb376528ffa180cd07778d5349ed15190b9d21c961117dd9d011c7e00",
+          "locator": "# Approximate counting and entropy of perfect matchings; ## Scope; ## Comparator links"
+        }
+      ],
+      "review_role": "Documented general-simple-graph FPRAS and selected entropy/triangle geometry.",
+      "source_statement_scope": "Doc scope matches. It does not certify every global geometric statement in the manuscript. No independent Lean build performed.",
+      "limitations": [
+        "Current bibliography uses an explanatory descriptive label, not necessarily the literal Markdown heading. This is identifiable documentation, not a scholarly publication."
+      ]
+    },
+    {
+      "number": 9,
+      "key": "scope114",
+      "category": "repository_documentation",
+      "bibliography_tex": "OpenAI.\n\\emph{Approximate counting of common integer polymatroid bases: Lean formalization scope}.\n2026.\n\\repourl{lean/docs/114.md}{Family 114 scope document}, accessed 7 October 2026.",
+      "metadata": {
+        "title": "Approximate counting of common integer polymatroid bases",
+        "corporate_attribution": "OpenAI",
+        "year": 2026,
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "access_date": "2026-10-07",
+        "doi": null,
+        "venue": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/114.md",
+          "kind": "pinned original repository documentation",
+          "sha256": "cd25483c953693a061aeb0da2ea51c152a749c9026cf48df17755f8d45884190",
+          "locator": "# Approximate counting of common integer polymatroid bases; ## Scope; ## Comparator links"
+        }
+      ],
+      "review_role": "Doc formal scope covers equal-rank matroid common bases with independence oracles, despite integer-polymatroid heading.",
+      "source_statement_scope": "Doc’s linked statement is matroid, not the October binary-capacity integer-polymatroid extension. No independent build.",
+      "limitations": [
+        "Current bibliography uses an explanatory descriptive label, not necessarily the literal Markdown heading. This is identifiable documentation, not a scholarly publication."
+      ]
+    },
+    {
+      "number": 10,
+      "key": "scope115",
+      "category": "repository_documentation",
+      "bibliography_tex": "OpenAI.\n\\emph{Sampling and counting contingency tables with arbitrary margins: Lean formalization scope}.\n2026.\n\\repourl{lean/docs/115.md}{Family 115 scope document}, accessed 7 October 2026.",
+      "metadata": {
+        "title": "Sampling and counting contingency tables with arbitrary margins",
+        "corporate_attribution": "OpenAI",
+        "year": 2026,
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "access_date": "2026-10-07",
+        "doi": null,
+        "venue": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/115.md",
+          "kind": "pinned original repository documentation",
+          "sha256": "7503f6655041af845dd16fb16746316e877356e75bcb3793ba68917585e02fb6",
+          "locator": "# Sampling and counting contingency tables with arbitrary margins; ## Scope; ## Comparator links"
+        }
+      ],
+      "review_role": "Doc unrestricted exact/approximate sampling plus cell-bounded counting.",
+      "source_statement_scope": "Exact cell-bounded sampling is not within documented sampling scope. No independent build.",
+      "limitations": [
+        "Current bibliography uses an explanatory descriptive label, not necessarily the literal Markdown heading. This is identifiable documentation, not a scholarly publication."
+      ]
+    },
+    {
+      "number": 11,
+      "key": "scope131",
+      "category": "repository_documentation",
+      "bibliography_tex": "OpenAI.\n\\emph{Rapid mixing of graph switches for every degree sequence: Lean formalization scope}.\n2026.\n\\repourl{lean/docs/131.md}{Family 131 scope document}, accessed 7 October 2026.",
+      "metadata": {
+        "title": "Rapid mixing of graph switches for every degree sequence",
+        "corporate_attribution": "OpenAI",
+        "year": 2026,
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "access_date": "2026-10-07",
+        "doi": null,
+        "venue": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/131.md",
+          "kind": "pinned original repository documentation",
+          "sha256": "95890a0433c375da400f600f581f1eb352416bc25f720c3483767022ce3fba4c",
+          "locator": "# Rapid mixing of graph switches for every degree sequence; ## Scope; ## Comparator links"
+        }
+      ],
+      "review_role": "Doc switch connectivity/mixing/gap for specified simple-undirected kernel.",
+      "source_statement_scope": "Exact sampler Corollary 1.2 is manuscript scope, not documented family 131 coverage. No independent build.",
+      "limitations": [
+        "Current bibliography uses an explanatory descriptive label, not necessarily the literal Markdown heading. This is identifiable documentation, not a scholarly publication."
+      ]
+    },
+    {
+      "number": 12,
+      "key": "comparator",
+      "category": "repository_documentation",
+      "bibliography_tex": "OpenAI.\n\\emph{Comparator challenges: checking instructions}.\n2026.\n\\repourl{lean/ComparatorChallenges/README.md}{Frozen checking instructions}, accessed 7 October 2026.",
+      "metadata": {
+        "title": "Comparator challenges",
+        "corporate_attribution": "OpenAI",
+        "year": 2026,
+        "version_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+        "access_date": "2026-10-07",
+        "doi": null,
+        "venue": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/README.md",
+          "kind": "pinned original repository documentation",
+          "sha256": "051459a45da1bedd1c0a6585a5b5e5425c7c40a369f2922d7b519e2fd02333b0",
+          "locator": "# [Comparator](https://github.com/leanprover/comparator) challenges"
+        }
+      ],
+      "review_role": "Comparator checking instructions and limited review coverage.",
+      "source_statement_scope": "Operational documentation. No check was executed; deliberate theorem placeholders are not presumed proof defects.",
+      "limitations": [
+        "Current bibliography uses an explanatory descriptive label, not necessarily the literal Markdown heading. This is identifiable documentation, not a scholarly publication."
+      ]
+    },
+    {
+      "number": 13,
+      "key": "JVV1986",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~R. Jerrum, L.~G. Valiant, and V.~V. Vazirani.\nRandom generation of combinatorial structures from a uniform distribution.\n\\emph{Theoretical Computer Science}, 43:169--188, 1986.\n\\doi{10.1016/0304-3975(86)90174-X}.",
+      "metadata": {
+        "title": "Random generation of combinatorial structures from a uniform distribution",
+        "authors": [
+          "Mark R. Jerrum",
+          "Leslie G. Valiant",
+          "Vijay V. Vazirani"
+        ],
+        "year": 1986,
+        "venue": "Theoretical Computer Science",
+        "volume": "43",
+        "issue": null,
+        "pages": "169-188",
+        "article_number": null,
+        "doi": "10.1016/0304-3975(86)90174-x",
+        "publisher": "Elsevier BV"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/030439758690174X",
+          "kind": "original publisher record",
+          "locator": "Original abstract and paper verify this framework. It does not mean every approximate sampler can be made efficiently exact without additional access."
+        },
+        {
+          "url": "https://www2.stat.duke.edu/homeweb/scs/Courses/Stat376/Papers/ConvergeRates/RandomizedAlgs/JerrumValiantVaziraniTCS1986.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Original abstract and paper verify this framework. It does not mean every approximate sampler can be made efficiently exact without additional access."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1016%2F0304-3975%2886%2990174-X",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        },
+        {
+          "url": "https://www2.stat.duke.edu/homeweb/scs/Courses/Stat376/Papers/ConvergeRates/RandomizedAlgs/JerrumValiantVaziraniTCS1986.pdf",
+          "kind": "RAM-fetched original text",
+          "sha256": "ca4d71ff082f1e7f0006773d0d2a9f2a175d1cceece588c8793a65ad6959348f",
+          "locator": "title page and relevant source section"
+        }
+      ],
+      "review_role": "For self-reducible families, approximate counting and almost-uniform generation have polynomial-time reductions.",
+      "source_statement_scope": "Original abstract and paper verify this framework. It does not mean every approximate sampler can be made efficiently exact without additional access.",
+      "limitations": []
+    },
+    {
+      "number": 14,
+      "key": "JSV2004",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~Jerrum, A.~Sinclair, and E.~Vigoda.\nA polynomial-time approximation algorithm for the permanent of a matrix with nonnegative entries.\n\\emph{Journal of the ACM}, 51(4):671--697, 2004.\n\\doi{10.1145/1008731.1008738}.",
+      "metadata": {
+        "title": "A polynomial-time approximation algorithm for the permanent of a matrix with nonnegative entries",
+        "authors": [
+          "Mark Jerrum",
+          "Alistair Sinclair",
+          "Eric Vigoda"
+        ],
+        "year": 2004,
+        "venue": "Journal of the ACM",
+        "volume": "51",
+        "issue": "4",
+        "pages": "671-697",
+        "article_number": null,
+        "doi": "10.1145/1008731.1008738",
+        "publisher": "Association for Computing Machinery (ACM)"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://dl.acm.org/doi/10.1145/1008731.1008738",
+          "kind": "original publisher record",
+          "locator": "Primary abstract matches; extension to all general graphs is not attributed to JSV."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1145%2F1008731.1008738",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "FPRAS for permanent of nonnegative matrices, hence bipartite matching baseline.",
+      "source_statement_scope": "Primary abstract matches; extension to all general graphs is not attributed to JSV.",
+      "limitations": []
+    },
+    {
+      "number": 15,
+      "key": "ALOV2024",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "N.~Anari, K.~Liu, S.~Oveis Gharan, and C.~Vinzant.\nLog-concave polynomials II: High-dimensional walks and an FPRAS for counting bases of a matroid.\n\\emph{Annals of Mathematics}, 199(1):259--299, 2024.\n\\doi{10.4007/annals.2024.199.1.4}.",
+      "metadata": {
+        "title": "Log-concave polynomials II: High-dimensional walks and an FPRAS for counting bases of a matroid",
+        "authors": [
+          "Nima Anari",
+          "Kuikui Liu",
+          "Shayan Oveis Gharan",
+          "Cynthia Vinzant"
+        ],
+        "year": 2024,
+        "venue": "Annals of Mathematics",
+        "volume": "199",
+        "issue": "1",
+        "pages": "259–299",
+        "doi": "10.4007/annals.2024.199.1.4",
+        "online_date": "2023-12-29",
+        "date_note": "Online 29 December 2023, journal issue 2024: cited year is correct."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://annals.math.princeton.edu/2024/199-1/p04",
+          "kind": "original publisher record",
+          "locator": "Primary Annals abstract matches; common-basis intersection is distinguished."
+        }
+      ],
+      "review_role": "Single-matroid basis FPRAS via log-concavity/high-dimensional walks and independence access.",
+      "source_statement_scope": "Primary Annals abstract matches; common-basis intersection is distinguished.",
+      "limitations": []
+    },
+    {
+      "number": 16,
+      "key": "AOV2021",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "N.~Anari, S.~Oveis Gharan, and C.~Vinzant.\nLog-concave polynomials, I: Entropy and a deterministic approximation algorithm for counting bases of matroids.\n\\emph{Duke Mathematical Journal}, 170(16):3459--3504, 2021.\n\\doi{10.1215/00127094-2020-0091}.",
+      "metadata": {
+        "title": "Log-concave polynomials, I: Entropy and a deterministic approximation algorithm for counting bases of matroids",
+        "authors": [
+          "Nima Anari",
+          "Shayan Oveis Gharan",
+          "Cynthia Vinzant"
+        ],
+        "year": 2021,
+        "venue": "Duke Mathematical Journal",
+        "volume": "170",
+        "issue": "16",
+        "pages": "3459–3504",
+        "article_number": null,
+        "doi": "10.1215/00127094-2020-0091",
+        "publisher": "Duke University Press"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://sites.math.washington.edu/~vinzant/Publications_Vinzant_2022.pdf",
+          "kind": "author/institution publication record",
+          "locator": "Versioned arXiv abstract explicitly gives 2^{O(r)} factor; author publication list confirms journal metadata."
+        },
+        {
+          "url": "https://arxiv.org/abs/1807.00929v2",
+          "kind": "author-submitted original preprint and publication metadata",
+          "locator": "Versioned arXiv abstract explicitly gives 2^{O(r)} factor; author publication list confirms journal metadata."
+        },
+        {
+          "url": "https://doi.org/10.1215/00127094-2020-0091",
+          "kind": "original publisher record",
+          "locator": "Versioned arXiv abstract explicitly gives 2^{O(r)} factor; author publication list confirms journal metadata."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1215%2F00127094-2020-0091",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Deterministic exponential-in-rank approximation for bases and common bases.",
+      "source_statement_scope": "Versioned arXiv abstract explicitly gives 2^{O(r)} factor; author publication list confirms journal metadata.",
+      "limitations": [
+        "Duke/Project Euclid full page was not text-accessible; author’s publication PDF confirms 3459–3504 and versioned arXiv confirms claim. Crossref omits pages."
+      ]
+    },
+    {
+      "number": 17,
+      "key": "BH2020",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "P.~Br\\\"and\\'en and J.~Huh.\nLorentzian polynomials.\n\\emph{Annals of Mathematics}, 192(3):821--891, 2020.\n\\doi{10.4007/annals.2020.192.3.4}.",
+      "metadata": {
+        "title": "Lorentzian polynomials",
+        "authors": [
+          "Petter Brändén",
+          "June Huh"
+        ],
+        "year": 2020,
+        "venue": "Annals of Mathematics",
+        "volume": "192",
+        "issue": "3",
+        "pages": "821–891",
+        "doi": "10.4007/annals.2020.192.3.4"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://annals.math.princeton.edu/2020/192-3/p04",
+          "kind": "original publisher record",
+          "locator": "Primary Annals paper/abstract supports structural background; no automatic common-base FPRAS is inferred."
+        }
+      ],
+      "review_role": "Lorentzian structural framework for discrete generating polynomials.",
+      "source_statement_scope": "Primary Annals paper/abstract supports structural background; no automatic common-base FPRAS is inferred.",
+      "limitations": []
+    },
+    {
+      "number": 18,
+      "key": "SVW2017",
+      "category": "external_research_preprint",
+      "bibliography_tex": "D.~\\v{S}tefankovi\\v{c}, E.~Vigoda, and J.~Wilmes.\nOn Counting Perfect Matchings in General Graphs.\n\\href{https://arxiv.org/abs/1712.07504v1}{arXiv:1712.07504v1}, submitted 20 December 2017.",
+      "metadata": {
+        "title": "On Counting Perfect Matchings in General Graphs",
+        "authors": [
+          "Daniel Štefankovič",
+          "Eric Vigoda",
+          "John Wilmes"
+        ],
+        "year": 2017,
+        "arxiv": "1712.07504",
+        "version": "v1",
+        "submitted_date": "2017-12-20",
+        "version_date": "2017-12-20",
+        "venue": null,
+        "pages": null,
+        "doi_in_citation": null,
+        "note": "Cited preprint version; comments mention LATIN 2018. No journal fields claimed."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/abs/1712.07504v1",
+          "kind": "versioned original arXiv metadata",
+          "locator": "Actual v1 authors/title/abstract verified: either perfect-matching mass inadequate or mixing slow, even with arbitrary hole weights. Not an impossibility theorem for all algorithms."
+        }
+      ],
+      "review_role": "Obstruction for the familiar weighted perfect/near-perfect chain in general graphs.",
+      "source_statement_scope": "Actual v1 authors/title/abstract verified: either perfect-matching mass inadequate or mixing slow, even with arbitrary hole weights. Not an impossibility theorem for all algorithms.",
+      "limitations": [
+        "Cited version’s metadata and relevant statements checked, not an independent proof certification or assurance of publication priority."
+      ]
+    },
+    {
+      "number": 19,
+      "key": "DKM1997",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~Dyer, R.~Kannan, and J.~Mount.\nSampling contingency tables.\n\\emph{Random Structures \\& Algorithms}, 10(4):487--506, 1997.\n\\doi{10.1002/(SICI)1098-2418(199707)10:4<487::AID-RSA4>3.0.CO;2-Q}.",
+      "metadata": {
+        "title": "Sampling contingency tables",
+        "authors": [
+          "Martin Dyer",
+          "Ravi Kannan",
+          "John Mount"
+        ],
+        "year": 1997,
+        "venue": "Random Structures and Algorithms",
+        "volume": "10",
+        "issue": "4",
+        "pages": "487-506",
+        "article_number": null,
+        "doi": "10.1002/(sici)1098-2418(199707)10:4<487::aid-rsa4>3.0.co;2-q",
+        "publisher": "Wiley"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1098-2418(199707)10:4%3C487::AID-RSA4%3E3.0.CO;2-Q",
+          "kind": "original publisher record",
+          "locator": "Primary Wiley abstract and original author manuscript; restrictions retained, not arbitrary-small-margin theorem."
+        },
+        {
+          "url": "https://www.math.ucdavis.edu/~deloera/MISC/LA-BIBLIO/trunk/Mount2.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Primary Wiley abstract and original author manuscript; restrictions retained, not arbitrary-small-margin theorem."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1002%2F%28SICI%291098-2418%28199707%2910%3A4%3C487%3A%3AAID-RSA4%3E3.0.CO%3B2-Q",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        },
+        {
+          "url": "https://www.math.ucdavis.edu/~deloera/MISC/LA-BIBLIO/trunk/Mount2.pdf",
+          "kind": "RAM-fetched original text",
+          "sha256": "07d220cbf7ac1985ae4e0a05289996d79bd31be9db461484f7b65c6f68c77262",
+          "locator": "title page and relevant source section"
+        }
+      ],
+      "review_role": "Geometric/convex-body sampling for sufficiently large margins.",
+      "source_statement_scope": "Primary Wiley abstract and original author manuscript; restrictions retained, not arbitrary-small-margin theorem.",
+      "limitations": []
+    },
+    {
+      "number": 20,
+      "key": "Morris2002",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "B.~J. Morris.\nImproved bounds for sampling contingency tables.\n\\emph{Random Structures \\& Algorithms}, 21(2):135--146, 2002.\n\\doi{10.1002/rsa.10049}.",
+      "metadata": {
+        "title": "Improved bounds for sampling contingency tables",
+        "authors": [
+          "Ben J. Morris"
+        ],
+        "year": 2002,
+        "venue": "Random Structures & Algorithms",
+        "volume": "21",
+        "issue": "2",
+        "pages": "135-146",
+        "article_number": null,
+        "doi": "10.1002/rsa.10049",
+        "publisher": "Wiley",
+        "date_note": "Online July 2002 and September 2002 print issue do not change cited year."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/rsa.10049",
+          "kind": "original publisher record",
+          "locator": "Publisher abstract states quantitative margin requirements; review does not claim universal sampling."
+        },
+        {
+          "url": "https://www.math.cmu.edu/~af1p/Teaching/MCC17/Papers/contingency1.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Publisher abstract states quantitative margin requirements; review does not claim universal sampling."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1002%2Frsa.10049",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Improves large-margin thresholds of geometric predecessor.",
+      "source_statement_scope": "Publisher abstract states quantitative margin requirements; review does not claim universal sampling.",
+      "limitations": []
+    },
+    {
+      "number": 21,
+      "key": "KM2006",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "S.~Kijima and T.~Matsui.\nPolynomial time perfect sampling algorithm for two-rowed contingency tables.\n\\emph{Random Structures \\& Algorithms}, 29(2):243--256, 2006.\n\\doi{10.1002/rsa.20087}.\nSee also \\href{https://www.keisu.t.u-tokyo.ac.jp/data/2003/METR03-15.pdf}{technical report METR 2003-15} for the update pseudocode.",
+      "metadata": {
+        "title": "Polynomial time perfect sampling algorithm for two‐rowed contingency tables",
+        "authors": [
+          "Shuji Kijima",
+          "Tomomi Matsui"
+        ],
+        "year": 2006,
+        "venue": "Random Structures & Algorithms",
+        "volume": "29",
+        "issue": "2",
+        "pages": "243-256",
+        "article_number": null,
+        "doi": "10.1002/rsa.20087",
+        "publisher": "Wiley",
+        "date_note": "First online 12 December 2005, issue September 2006: cited 2006 is correct. Technical report is a separately identified 2003 version, not the 2006 journal text."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://onlinelibrary.wiley.com/toc/10982418/29/2",
+          "kind": "original publisher record",
+          "locator": "Technical report Algorithm 2, Theorems 3.1/5.1 and runtime section use uniform real draws at unit cost. Review explicitly distinguishes that accounting from an audited unbiased-bit implementation."
+        },
+        {
+          "url": "https://www.keisu.t.u-tokyo.ac.jp/data/2003/METR03-15.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Technical report Algorithm 2, Theorems 3.1/5.1 and runtime section use uniform real draws at unit cost. Review explicitly distinguishes that accounting from an audited unbiased-bit implementation."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1002%2Frsa.20087",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        },
+        {
+          "url": "https://www.keisu.t.u-tokyo.ac.jp/data/2003/METR03-15.pdf",
+          "kind": "RAM-fetched original text",
+          "sha256": "c8b430d26dd32a0c4b201c5f0f12c90d44f89cd8cc5100a45db3e829b9f49922",
+          "locator": "title page and relevant source section"
+        }
+      ],
+      "review_role": "Exact two-row sampler by monotone CFTP, reported expected O(n^3 log N).",
+      "source_statement_scope": "Technical report Algorithm 2, Theorems 3.1/5.1 and runtime section use uniform real draws at unit cost. Review explicitly distinguishes that accounting from an audited unbiased-bit implementation.",
+      "limitations": []
+    },
+    {
+      "number": 22,
+      "key": "Dyer2003",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~Dyer.\nApproximate counting by dynamic programming.\nIn \\emph{Proceedings of the 35th Annual ACM Symposium on Theory of Computing},\npages 693--699, 2003.\n\\doi{10.1145/780542.780643}.",
+      "metadata": {
+        "title": "Approximate counting by dynamic programming",
+        "authors": [
+          "Martin Dyer"
+        ],
+        "year": 2003,
+        "venue": "Proceedings of the thirty-fifth annual ACM symposium on Theory of computing",
+        "volume": null,
+        "issue": null,
+        "pages": "693-699",
+        "article_number": null,
+        "doi": "10.1145/780542.780643",
+        "publisher": "ACM"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://dl.acm.org/doi/10.1145/780542.780643",
+          "kind": "original publisher record",
+          "locator": "Original ACM paper Section 3 verifies exact uniform generator; arithmetic-operation accounting and row-dependent exponents retained."
+        },
+        {
+          "url": "https://www.math.cmu.edu/~af1p/Teaching/MCC17/Papers/knapsack.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Original ACM paper Section 3 verifies exact uniform generator; arithmetic-operation accounting and row-dependent exponents retained."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1145%2F780542.780643",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        },
+        {
+          "url": "https://www.math.cmu.edu/~af1p/Teaching/MCC17/Papers/knapsack.pdf",
+          "kind": "RAM-fetched original text",
+          "sha256": "1c80bb84d519e913e88b64f734b88e79dcbe159cf0ba2327c8334adfcfc93332",
+          "locator": "title page and relevant source section"
+        }
+      ],
+      "review_role": "Fixed-row uniform sampling with dynamic programming and rejection.",
+      "source_statement_scope": "Original ACM paper Section 3 verifies exact uniform generator; arithmetic-operation accounting and row-dependent exponents retained.",
+      "limitations": [
+        "Publisher landing page unavailable to browser at this attempt; original ACM proceedings PDF and deposited DOI metadata inspected."
+      ]
+    },
+    {
+      "number": 23,
+      "key": "Gopalan2011",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "P.~Gopalan, A.~Klivans, R.~Meka, D.~\\v{S}tefankovi\\v{c}, S.~Vempala, and E.~Vigoda.\nAn FPTAS for \\#Knapsack and Related Counting Problems.\nIn \\emph{2011 IEEE 52nd Annual Symposium on Foundations of Computer Science},\npages 817--826, 2011.\n\\doi{10.1109/FOCS.2011.32}.",
+      "metadata": {
+        "title": "An FPTAS for #Knapsack and Related Counting Problems",
+        "authors": [
+          "Parikshit Gopalan",
+          "Adam Klivans",
+          "Raghu Meka",
+          "Daniel Štefankovič",
+          "Santosh Vempala",
+          "Eric Vigoda"
+        ],
+        "year": 2011,
+        "venue": "2011 IEEE 52nd Annual Symposium on Foundations of Computer Science",
+        "volume": null,
+        "issue": null,
+        "pages": "817-826",
+        "article_number": null,
+        "doi": "10.1109/focs.2011.32",
+        "publisher": "IEEE"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://ieeexplore.ieee.org/document/6108252/",
+          "kind": "original publisher record",
+          "locator": "Author original PDF Theorem 1.3: exponent depends on row count, so not fully variable dimension guarantee."
+        },
+        {
+          "url": "https://www.cs.utexas.edu/~klivans/focs11.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Author original PDF Theorem 1.3: exponent depends on row count, so not fully variable dimension guarantee."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1109%2FFOCS.2011.32",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        },
+        {
+          "url": "https://www.cs.utexas.edu/~klivans/focs11.pdf",
+          "kind": "RAM-fetched original text",
+          "sha256": "0985b69065c3dd58757c732a30798abf964b1f7c35d585ef7ebeb122197da283",
+          "locator": "title page and relevant source section"
+        }
+      ],
+      "review_role": "Fixed-row deterministic FPTAS with logarithmic numerical-margin dependence.",
+      "source_statement_scope": "Author original PDF Theorem 1.3: exponent depends on row count, so not fully variable dimension guarantee.",
+      "limitations": [
+        "Crossref encodes Štefankovič incorrectly; original author PDF gives correct name. Current bibliography is already correctly accented."
+      ]
+    },
+    {
+      "number": 24,
+      "key": "MH2013",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "J.~W. Miller and M.~T. Harrison.\nExact sampling and counting for fixed-margin matrices.\n\\emph{Annals of Statistics}, 41(3):1569--1592, 2013.\n\\doi{10.1214/13-AOS1131}.",
+      "metadata": {
+        "title": "Exact sampling and counting for fixed-margin matrices",
+        "authors": [
+          "Jeffrey W. Miller",
+          "Matthew T. Harrison"
+        ],
+        "year": 2013,
+        "venue": "The Annals of Statistics",
+        "volume": "41",
+        "issue": "3",
+        "pages": "1569–1592",
+        "article_number": null,
+        "doi": "10.1214/13-aos1131",
+        "publisher": "Institute of Mathematical Statistics"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/abs/1301.6635v2",
+          "kind": "author-submitted original preprint and publication metadata",
+          "locator": "Original author arXiv v2 journal reference and Theorem 3.3/Algorithm 3.4 verify scope; not a general binary-input polynomial-time counter."
+        },
+        {
+          "url": "https://arxiv.org/html/1301.6635v2",
+          "kind": "author-submitted original preprint and publication metadata",
+          "locator": "Original author arXiv v2 journal reference and Theorem 3.3/Algorithm 3.4 verify scope; not a general binary-input polynomial-time counter."
+        },
+        {
+          "url": "https://doi.org/10.1214/13-AOS1131",
+          "kind": "original publisher record",
+          "locator": "Original author arXiv v2 journal reference and Theorem 3.3/Algorithm 3.4 verify scope; not a general binary-input polynomial-time counter."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1214%2F13-AOS1131",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Exact fixed-margin counting and sampling; complexity polynomial for fixed maximum column sum, practical examples.",
+      "source_statement_scope": "Original author arXiv v2 journal reference and Theorem 3.3/Algorithm 3.4 verify scope; not a general binary-input polynomial-time counter.",
+      "limitations": []
+    },
+    {
+      "number": 25,
+      "key": "AGW2024",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "A.~Arman, P.~Gao, and N.~Wormald.\nLinear-time uniform generation of random sparse contingency tables with specified marginals.\n\\emph{Annals of Applied Probability}, 34(2):2036--2064, 2024.\n\\doi{10.1214/23-AAP2013}.",
+      "metadata": {
+        "title": "Linear-time uniform generation of random sparse contingency tables with specified marginals",
+        "authors": [
+          "Andrii Arman",
+          "Pu Gao",
+          "Nicholas Wormald"
+        ],
+        "year": 2024,
+        "venue": "The Annals of Applied Probability",
+        "volume": "34",
+        "issue": "2",
+        "pages": "2036–2064",
+        "article_number": null,
+        "doi": "10.1214/23-aap2013",
+        "publisher": "Institute of Mathematical Statistics"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.imstat.org/publications/aap/aap_34_2/aap_34_2.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Original IMS issue paper and author institution abstract verify condition. O(N) numeric-total complexity is not generally poly(log N)."
+        },
+        {
+          "url": "https://research.monash.edu/en/publications/linear-time-uniform-generation-of-random-sparse-contingency-table/",
+          "kind": "author/institution publication record",
+          "locator": "Original IMS issue paper and author institution abstract verify condition. O(N) numeric-total complexity is not generally poly(log N)."
+        },
+        {
+          "url": "https://arxiv.org/abs/2104.09413v2",
+          "kind": "author-submitted original preprint and publication metadata",
+          "locator": "Original IMS issue paper and author institution abstract verify condition. O(N) numeric-total complexity is not generally poly(log N)."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1214%2F23-AAP2013",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Exact sparse-table sampler with expected linear numerical-total work if 5 Delta^4<N.",
+      "source_statement_scope": "Original IMS issue paper and author institution abstract verify condition. O(N) numeric-total complexity is not generally poly(log N).",
+      "limitations": []
+    },
+    {
+      "number": 26,
+      "key": "DG2000",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~Dyer and C.~Greenhill.\nPolynomial-time counting and sampling of two-rowed contingency tables.\n\\emph{Theoretical Computer Science}, 246(1--2):265--278, 2000.\n\\doi{10.1016/S0304-3975(99)00136-X}.",
+      "metadata": {
+        "title": "Polynomial-time counting and sampling of two-rowed contingency tables",
+        "authors": [
+          "Martin Dyer",
+          "Catherine Greenhill"
+        ],
+        "year": 2000,
+        "venue": "Theoretical Computer Science",
+        "volume": "246",
+        "issue": "1-2",
+        "pages": "265-278",
+        "article_number": null,
+        "doi": "10.1016/s0304-3975(99)00136-x",
+        "publisher": "Elsevier BV"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S030439759900136X",
+          "kind": "original publisher record",
+          "locator": "Primary paper explicitly describes almost-uniform sampling, not exact sampling; primary journal metadata matches."
+        },
+        {
+          "url": "https://web.maths.unsw.edu.au/~csg/papers/contingency.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Primary paper explicitly describes almost-uniform sampling, not exact sampling; primary journal metadata matches."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1016%2FS0304-3975%2899%2900136-X",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Two-row FPRAS and almost-uniform Markov-chain sampler.",
+      "source_statement_scope": "Primary paper explicitly describes almost-uniform sampling, not exact sampling; primary journal metadata matches.",
+      "limitations": []
+    },
+    {
+      "number": 27,
+      "key": "CD2003",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~Cryan and M.~Dyer.\nA polynomial-time algorithm to approximately count contingency tables when the number of rows is constant.\n\\emph{Journal of Computer and System Sciences}, 67(2):291--310, 2003.\n\\doi{10.1016/S0022-0000(03)00014-X}.",
+      "metadata": {
+        "title": "A polynomial-time algorithm to approximately count contingency tables when the number of rows is constant",
+        "authors": [
+          "Mary Cryan",
+          "Martin Dyer"
+        ],
+        "year": 2003,
+        "venue": "Journal of Computer and System Sciences",
+        "volume": "67",
+        "issue": "2",
+        "pages": "291-310",
+        "article_number": null,
+        "doi": "10.1016/s0022-0000(03)00014-x",
+        "publisher": "Elsevier BV"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S002200000300014X",
+          "kind": "original publisher record",
+          "locator": "Primary publisher abstract retains constant-row restriction; no variable-row extension inferred."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1016%2FS0022-0000%2803%2900014-X",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Fixed-row FPRAS for unrestricted tables.",
+      "source_statement_scope": "Primary publisher abstract retains constant-row restriction; no variable-row extension inferred.",
+      "limitations": []
+    },
+    {
+      "number": 28,
+      "key": "CDR2010",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "M.~Cryan, M.~Dyer, and D.~Randall.\nApproximately counting integral flows and cell-bounded contingency tables.\n\\emph{SIAM Journal on Computing}, 39(7):2683--2703, 2010.\n\\doi{10.1137/060650544}.",
+      "metadata": {
+        "title": "Approximately Counting Integral Flows and Cell-Bounded Contingency Tables",
+        "authors": [
+          "Mary Cryan",
+          "Martin Dyer",
+          "Dana Randall"
+        ],
+        "year": 2010,
+        "venue": "SIAM Journal on Computing",
+        "volume": "39",
+        "issue": "7",
+        "pages": "2683-2703",
+        "article_number": null,
+        "doi": "10.1137/060650544",
+        "publisher": "Society for Industrial & Applied Mathematics (SIAM)"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://epubs.siam.org/doi/10.1137/060650544",
+          "kind": "original publisher record",
+          "locator": "Primary SIAM abstract directly states arbitrary row/column sums and bounds within constant-row restriction."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1137%2F060650544",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Cell-bounded table FPRAS when number of rows is constant.",
+      "source_statement_scope": "Primary SIAM abstract directly states arbitrary row/column sums and bounds within constant-row restriction.",
+      "limitations": []
+    },
+    {
+      "number": 29,
+      "key": "BBV2007",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "I.~Bez\\'akov\\'a, N.~Bhatnagar, and E.~Vigoda.\nSampling binary contingency tables with a greedy start.\n\\emph{Random Structures \\& Algorithms}, 30(1--2):168--205, 2007.\n\\doi{10.1002/rsa.20155}.",
+      "metadata": {
+        "title": "Sampling binary contingency tables with a greedy start",
+        "authors": [
+          "Ivona Bezáková",
+          "Nayantara Bhatnagar",
+          "Eric Vigoda"
+        ],
+        "year": 2007,
+        "venue": "Random Structures & Algorithms",
+        "volume": "30",
+        "issue": "1-2",
+        "pages": "168-205",
+        "article_number": null,
+        "doi": "10.1002/rsa.20155",
+        "publisher": "Wiley",
+        "date_note": "First online 13 December 2006, issue January–March 2007: cited 2007 is correct."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/rsa.20155",
+          "kind": "original publisher record",
+          "locator": "Primary Wiley abstract states all row/column sums; this does not assert rapid mixing of the ordinary binary swap chain."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1002%2Frsa.20155",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Annealing algorithms for binary tables with arbitrary feasible margins.",
+      "source_statement_scope": "Primary Wiley abstract states all row/column sums; this does not assert rapid mixing of the ordinary binary swap chain.",
+      "limitations": []
+    },
+    {
+      "number": 30,
+      "key": "Greenhill2021",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "C.~Greenhill.\nGenerating graphs randomly.\nIn \\emph{Surveys in Combinatorics 2021}, London Mathematical Society Lecture Note Series, volume 470, pages 133--186.\nCambridge University Press, 2021.\n\\doi{10.1017/9781009036214.005}.\nSee also the author's correction and reference update on\n\\href{https://web.maths.unsw.edu.au/~csg/publications.html}{her publication page}.",
+      "metadata": {
+        "title": "Generating graphs randomly",
+        "authors": [
+          "Catherine Greenhill"
+        ],
+        "year": 2021,
+        "venue": "Surveys in Combinatorics 2021",
+        "volume": null,
+        "issue": null,
+        "pages": "133-186",
+        "article_number": null,
+        "doi": "10.1017/9781009036214.005",
+        "publisher": "Cambridge University Press",
+        "series": "London Mathematical Society Lecture Note Series",
+        "series_volume": "470"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/AF8E08B99555E31A6AF1BAEB754911EC",
+          "kind": "original publisher record",
+          "locator": "Author publication record verifies chapter metadata and notes missed Feder–Guetz–Mihail–Saberi 2006 Section 4.1/Corollary 6. Review retains author correction link; no false prior-history claim."
+        },
+        {
+          "url": "https://web.maths.unsw.edu.au/~csg/publications.html",
+          "kind": "author/institution publication record",
+          "locator": "Author publication record verifies chapter metadata and notes missed Feder–Guetz–Mihail–Saberi 2006 Section 4.1/Corollary 6. Review retains author correction link; no false prior-history claim."
+        },
+        {
+          "url": "https://arxiv.org/abs/2201.04888",
+          "kind": "author-submitted original preprint and publication metadata",
+          "locator": "Author publication record verifies chapter metadata and notes missed Feder–Guetz–Mihail–Saberi 2006 Section 4.1/Corollary 6. Review retains author correction link; no false prior-history claim."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1017%2F9781009036214.005",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Survey of random graph generation and switch-chain regimes.",
+      "source_statement_scope": "Author publication record verifies chapter metadata and notes missed Feder–Guetz–Mihail–Saberi 2006 Section 4.1/Corollary 6. Review retains author correction link; no false prior-history claim.",
+      "limitations": [
+        "Publisher DOI route failed in one attempt; publisher-deposited metadata plus author’s chapter record/explicit reference update inspected."
+      ]
+    },
+    {
+      "number": 31,
+      "key": "Unified2022",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "P.~L. Erd\\H{o}s, C.~Greenhill, T.~R. Mezei, I.~Mikl\\'os, D.~Solt\\'esz, and L.~Soukup.\nThe mixing time of switch Markov chains: A unified approach.\n\\emph{European Journal of Combinatorics}, 99:103421, 2022.\n\\doi{10.1016/j.ejc.2021.103421}.",
+      "metadata": {
+        "title": "The mixing time of switch Markov chains: A unified approach",
+        "authors": [
+          "Péter L. Erdős",
+          "Catherine Greenhill",
+          "Tamás Róbert Mezei",
+          "István Miklós",
+          "Dániel Soltész",
+          "Lajos Soukup"
+        ],
+        "year": 2022,
+        "venue": "European Journal of Combinatorics",
+        "volume": "99",
+        "issue": null,
+        "pages": "103421",
+        "article_number": "103421",
+        "doi": "10.1016/j.ejc.2021.103421",
+        "publisher": "Elsevier BV",
+        "date_note": "DOI includes 2021; journal issue is January 2022. Current year/article number are correct."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/abs/1903.06600v5",
+          "kind": "author-submitted original preprint and publication metadata",
+          "locator": "Actual author arXiv v5 abstract and journal reference verify; P-stability restriction retained rather than every graphical sequence."
+        },
+        {
+          "url": "https://web.maths.unsw.edu.au/~csg/publications.html",
+          "kind": "author/institution publication record",
+          "locator": "Actual author arXiv v5 abstract and journal reference verify; P-stability restriction retained rather than every graphical sequence."
+        },
+        {
+          "url": "https://doi.org/10.1016/j.ejc.2021.103421",
+          "kind": "original publisher record",
+          "locator": "Actual author arXiv v5 abstract and journal reference verify; P-stability restriction retained rather than every graphical sequence."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1016%2Fj.ejc.2021.103421",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Rapid mixing for P-stable families across unconstrained, bipartite and directed models.",
+      "source_statement_scope": "Actual author arXiv v5 abstract and journal reference verify; P-stability restriction retained rather than every graphical sequence.",
+      "limitations": []
+    },
+    {
+      "number": 32,
+      "key": "FQW2026",
+      "category": "external_research_preprint",
+      "bibliography_tex": "W.~Fu, Q.~Qin, and G.~Wang.\nSpectral gap for the binary fixed-margin swap chain.\n\\href{https://arxiv.org/abs/2606.22636v2}{arXiv:2606.22636v2}, revised 13 July 2026.",
+      "metadata": {
+        "title": "Spectral Gap for the Binary Fixed-Margin Swap Chain",
+        "authors": [
+          "Weibo Fu",
+          "Qian Qin",
+          "Guanyang Wang"
+        ],
+        "year": 2026,
+        "arxiv": "2606.22636",
+        "version": "v2",
+        "submitted_date": "2026-06-21",
+        "version_date": "2026-07-13",
+        "venue": null,
+        "pages": null,
+        "doi_in_citation": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/abs/2606.22636v2",
+          "kind": "versioned original arXiv metadata",
+          "locator": "Actual v2 HTML Theorem 2.2 and kernel definition verified; 1/2 laziness, unordered row/column pairs. Bipartite model distinguished from symmetric simple-undirected adjacency."
+        },
+        {
+          "url": "https://arxiv.org/html/2606.22636v2",
+          "kind": "versioned original manuscript HTML",
+          "locator": "Actual v2 HTML Theorem 2.2 and kernel definition verified; 1/2 laziness, unordered row/column pairs. Bipartite model distinguished from symmetric simple-undirected adjacency."
+        }
+      ],
+      "review_role": "General feasible binary fixed-margin lazy swap-chain gap >= 1/(choose(m,2) choose(n,2)), m,n>=2.",
+      "source_statement_scope": "Actual v2 HTML Theorem 2.2 and kernel definition verified; 1/2 laziness, unordered row/column pairs. Bipartite model distinguished from symmetric simple-undirected adjacency.",
+      "limitations": [
+        "Cited version’s metadata and relevant statements checked, not an independent proof certification or assurance of publication priority."
+      ]
+    },
+    {
+      "number": 33,
+      "key": "ChenLiu2026",
+      "category": "external_research_preprint",
+      "bibliography_tex": "X.~Chen and K.~Liu.\nAn FPRAS for Counting Common Bases of Two Matroids.\n\\href{https://arxiv.org/abs/2610.06724v1}{arXiv:2610.06724v1}, submitted 5 October 2026.",
+      "metadata": {
+        "title": "An FPRAS for Counting Common Bases of Two Matroids",
+        "authors": [
+          "Xiaoyu Chen",
+          "Kuikui Liu"
+        ],
+        "year": 2026,
+        "arxiv": "2610.06724",
+        "version": "v1",
+        "submitted_date": "2026-10-05",
+        "version_date": "2026-10-05",
+        "venue": null,
+        "pages": null,
+        "doi_in_citation": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/abs/2610.06724v1",
+          "kind": "versioned original arXiv metadata",
+          "locator": "Actual v1 Theorem 1.2 and Remark 1.3, Appendix C.9 Proposition C.20/Corollary C.21 verified. C.20 uses unary capacities; C.21 requires polynomial sum of capacities and log weight range, arithmetic model. Distinct from arbitrary binary capacities."
+        },
+        {
+          "url": "https://arxiv.org/html/2610.06724v1",
+          "kind": "versioned original manuscript HTML",
+          "locator": "Actual v1 Theorem 1.2 and Remark 1.3, Appendix C.9 Proposition C.20/Corollary C.21 verified. C.20 uses unary capacities; C.21 requires polynomial sum of capacities and log weight range, arithmetic model. Distinct from arbitrary binary capacities."
+        }
+      ],
+      "review_role": "Common-base FPRAS and approximate sampling; soft-intersection and curvature method; unary-capacity integer applications.",
+      "source_statement_scope": "Actual v1 Theorem 1.2 and Remark 1.3, Appendix C.9 Proposition C.20/Corollary C.21 verified. C.20 uses unary capacities; C.21 requires polynomial sum of capacities and log weight range, arithmetic model. Distinct from arbitrary binary capacities.",
+      "limitations": [
+        "Cited version’s metadata and relevant statements checked, not an independent proof certification or assurance of publication priority."
+      ]
+    },
+    {
+      "number": 34,
+      "key": "GLMP2024",
+      "category": "external_research_preprint",
+      "bibliography_tex": "A.~G\\\"obel, J.~Liu, P.~Manurangsi, and M.~Pappik.\nPerfect sampling from rapidly mixing Markov chains.\n\\href{https://arxiv.org/abs/2410.00882v2}{arXiv:2410.00882v2}, revised 6 December 2024.",
+      "metadata": {
+        "title": "Perfect sampling from rapidly mixing Markov chains",
+        "authors": [
+          "Andreas Göbel",
+          "Jingcheng Liu",
+          "Pasin Manurangsi",
+          "Marcus Pappik"
+        ],
+        "year": 2024,
+        "arxiv": "2410.00882",
+        "version": "v2",
+        "submitted_date": "2024-10-01",
+        "version_date": "2024-12-06",
+        "venue": null,
+        "pages": null,
+        "doi_in_citation": null
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/abs/2410.00882v2",
+          "kind": "versioned original arXiv metadata",
+          "locator": "Versioned v2 text explicitly needs output-law and target-distribution oracles; naive random-tape enumeration can invalidate the intended cost. Review includes exact evaluation/precision-cost guard."
+        },
+        {
+          "url": "https://arxiv.org/html/2410.00882v2",
+          "kind": "versioned original manuscript HTML",
+          "locator": "Versioned v2 text explicitly needs output-law and target-distribution oracles; naive random-tape enumeration can invalidate the intended cost. Review includes exact evaluation/precision-cost guard."
+        }
+      ],
+      "review_role": "Rare correction using approximate sampler plus usable exponential-time law and target evaluators.",
+      "source_statement_scope": "Versioned v2 text explicitly needs output-law and target-distribution oracles; naive random-tape enumeration can invalidate the intended cost. Review includes exact evaluation/precision-cost guard.",
+      "limitations": [
+        "Cited version’s metadata and relevant statements checked, not an independent proof certification or assurance of publication priority."
+      ]
+    },
+    {
+      "number": 35,
+      "key": "Edmonds2003",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "J.~Edmonds.\nSubmodular functions, matroids, and certain polyhedra.\nIn M.~J\\\"unger, G.~Reinelt, and G.~Rinaldi, editors,\n\\emph{Combinatorial Optimization---Eureka, You Shrink!},\nLecture Notes in Computer Science, volume 2570, pages 11--26.\nSpringer, Berlin, Heidelberg, 2003.\n\\doi{10.1007/3-540-36478-1_2}.",
+      "metadata": {
+        "title": "Submodular Functions, Matroids, and Certain Polyhedra",
+        "authors": [
+          "Jack Edmonds"
+        ],
+        "year": 2003,
+        "venue": "Combinatorial Optimization—Eureka, You Shrink!",
+        "editors": [
+          "Michael Jünger",
+          "Gerhard Reinelt",
+          "Giovanni Rinaldi"
+        ],
+        "series": "Lecture Notes in Computer Science",
+        "volume": "2570",
+        "pages": "11–26",
+        "publisher": "Springer, Berlin, Heidelberg",
+        "doi": "10.1007/3-540-36478-1_2",
+        "published_date": "2003-01-30",
+        "first_online_date": "2003-01-01"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://link.springer.com/chapter/10.1007/3-540-36478-1_2",
+          "kind": "original publisher record",
+          "locator": "Springer 2003 edition: chapter metadata and preview definitions of polymatroids and rank inequalities."
+        },
+        {
+          "url": "https://page-one.springer.com/pdf/preview/10.1007/3-540-36478-1_2",
+          "kind": "original paper or author-hosted text",
+          "locator": "Springer 2003 edition: chapter metadata and preview definitions of polymatroids and rank inequalities."
+        }
+      ],
+      "review_role": "Classical polymatroid/submodular-rank framework.",
+      "source_statement_scope": "The verified Springer 2003 chapter preview gives the polymatroid definition and its rank-inequality characterization.",
+      "limitations": [
+        "The citation identifies the verified 2003 Springer edition."
+      ]
+    },
+    {
+      "number": 36,
+      "key": "Patefield1981",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "W.~M. Patefield.\nAlgorithm AS 159: An efficient method of generating random \\(R\\times C\\) tables with given row and column totals.\n\\emph{Applied Statistics}, 30(1):91--97, 1981.\n\\doi{10.2307/2346669}.",
+      "metadata": {
+        "title": "Algorithm AS 159: An Efficient Method of Generating Random R × C Tables with Given Row and Column Totals",
+        "authors": [
+          "W. M. Patefield"
+        ],
+        "year": 1981,
+        "venue": "Applied Statistics",
+        "volume": "30",
+        "issue": "1",
+        "pages": "91–97",
+        "article_number": null,
+        "doi": "10.2307/2346669",
+        "publisher": "JSTOR"
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.jstor.org/stable/i316078",
+          "kind": "original publisher record",
+          "locator": "Original JSTOR issue confirms metadata; SciPy official distribution documentation confirms target null law. The review derives 2x2 probabilities independently."
+        },
+        {
+          "url": "https://doi.org/10.2307/2346669",
+          "kind": "original publisher record",
+          "locator": "Original JSTOR issue confirms metadata; SciPy official distribution documentation confirms target null law. The review derives 2x2 probabilities independently."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.2307%2F2346669",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Fixed-margin conditional-independence/Fisher sampler, contrasted with uniform tables.",
+      "source_statement_scope": "Original JSTOR issue confirms metadata; SciPy official distribution documentation confirms target null law. The review derives 2x2 probabilities independently.",
+      "limitations": []
+    },
+    {
+      "number": 37,
+      "key": "ScipyRandomTable",
+      "category": "software_documentation",
+      "bibliography_tex": "The SciPy community.\n\\emph{scipy.stats.random\\_table}.\nSciPy v1.18.0 reference manual,\n\\href{https://docs.scipy.org/doc/scipy-1.18.0/reference/generated/scipy.stats.random_table.html}{distribution and algorithm documentation},\naccessed 7 October 2026.",
+      "metadata": {
+        "title": "scipy.stats.random_table",
+        "corporate_attribution": "The SciPy community",
+        "version": "1.18.0",
+        "venue": "SciPy v1.18.0 Manual",
+        "access_date": "2026-10-07",
+        "year": null,
+        "doi": null,
+        "pages": null
+      },
+      "status": "verified_identifiable_documentation",
+      "evidence": [
+        {
+          "url": "https://docs.scipy.org/doc/scipy-1.18.0/reference/generated/scipy.stats.random_table.html",
+          "kind": "official versioned software documentation",
+          "locator": "actual page/version header, distribution description, Notes and algorithm references"
+        }
+      ],
+      "review_role": "SciPy fixed-margin independent-row/column null distribution and Patefield algorithm.",
+      "source_statement_scope": "Actual version-specific header says SciPy v1.18.0 Manual; distribution description assumes row/column independence and lists Boyett/Patefield. It is not cited as uniform-on-tables software.",
+      "limitations": []
+    },
+    {
+      "number": 38,
+      "key": "Hoeffding1963",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "W.~Hoeffding.\nProbability inequalities for sums of bounded random variables.\n\\emph{Journal of the American Statistical Association}, 58(301):13--30, 1963.\n\\doi{10.1080/01621459.1963.10500830}.",
+      "metadata": {
+        "title": "Probability Inequalities for Sums of Bounded Random Variables",
+        "authors": [
+          "Wassily Hoeffding"
+        ],
+        "year": 1963,
+        "venue": "Journal of the American Statistical Association",
+        "volume": "58",
+        "issue": "301",
+        "pages": "13-30",
+        "article_number": null,
+        "doi": "10.1080/01621459.1963.10500830",
+        "publisher": "Informa UK Limited",
+        "date_note": "2012 publisher digitization date is not publication year; original issue 1963 is correctly cited."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/01621459.1963.10500830",
+          "kind": "original publisher record",
+          "locator": "Original publisher abstract states independence and bounded ranges; review requires independent fresh/restarted draws, not consecutive correlated chain states."
+        },
+        {
+          "url": "https://www.tandfonline.com/toc/uasa20/58/301",
+          "kind": "original publisher record",
+          "locator": "Original publisher abstract states independence and bounded ranges; review requires independent fresh/restarted draws, not consecutive correlated chain states."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1080%2F01621459.1963.10500830",
+          "kind": "publisher-deposited Crossref metadata corroboration",
+          "locator": "authors/title/DOI/venue/year/volume/issue/page fields when supplied"
+        }
+      ],
+      "review_role": "Independent bounded [0,1] samples with Hoeffding deviation bound.",
+      "source_statement_scope": "Original publisher abstract states independence and bounded ranges; review requires independent fresh/restarted draws, not consecutive correlated chain states.",
+      "limitations": []
+    },
+    {
+      "number": 39,
+      "key": "LP2017",
+      "category": "published_scholarly_work",
+      "bibliography_tex": "D.~A. Levin and Y.~Peres, with contributions by E.~L. Wilmer.\n\\emph{Markov Chains and Mixing Times}, second edition.\nAmerican Mathematical Society, 2017.\n\\href{https://pages.uoregon.edu/dlevin/MARKOV/mcmt2e.pdf}{Author-hosted text}.",
+      "metadata": {
+        "title": "Markov Chains and Mixing Times",
+        "authors": [
+          "David A. Levin",
+          "Yuval Peres"
+        ],
+        "contributors": [
+          "Elizabeth L. Wilmer"
+        ],
+        "edition": "second",
+        "year": 2017,
+        "publisher": "American Mathematical Society",
+        "venue": null,
+        "volume": null,
+        "issue": null,
+        "pages": null,
+        "doi": null,
+        "note": "No DOI or page-count field claimed in current citation."
+      },
+      "status": "verified_metadata_and_relevant_claim",
+      "evidence": [
+        {
+          "url": "https://pages.uoregon.edu/dlevin/MARKOV/mcmt2e.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Author-hosted second-edition text Chapter 12: laziness identifies ordinary with absolute gap, spectral contraction plus Cauchy–Schwarz yields displayed bound. Source supports theoretical bound, not transition-cost claim."
+        },
+        {
+          "url": "https://www.ams.org/books/mbk/107/mbk107-endmatter.pdf",
+          "kind": "original paper or author-hosted text",
+          "locator": "Author-hosted second-edition text Chapter 12: laziness identifies ordinary with absolute gap, spectral contraction plus Cauchy–Schwarz yields displayed bound. Source supports theoretical bound, not transition-cost claim."
+        },
+        {
+          "url": "https://pages.uoregon.edu/dlevin/MARKOV/mcmt2e.pdf",
+          "kind": "RAM-fetched original text",
+          "sha256": "9ef39f9467d9647ff3f5e8747b9ce24b7a90d13be2f8156fbd827b95b661a772",
+          "locator": "title page and relevant source section"
+        }
+      ],
+      "review_role": "Finite reversible lazy-chain spectral-gap/L2-to-TV relation.",
+      "source_statement_scope": "Author-hosted second-edition text Chapter 12: laziness identifies ordinary with absolute gap, spectral contraction plus Cauchy–Schwarz yields displayed bound. Source supports theoretical bound, not transition-cost claim.",
+      "limitations": []
+    }
+  ]
+}

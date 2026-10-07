@@ -1,0 +1,140 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "main.tex",
+      "sha256": "1f3ed4e4b5492977a98fc4ec8277af218889f88a809cf73343b7e1e96064e2f4",
+      "bytes": 60532
+    },
+    {
+      "path": "counting-and-sampling-review.pdf",
+      "sha256": "2f404343e22145e66fc64c6e6710866c59fad5cd8d8cf21d78cc767f66d185e2",
+      "bytes": 472764
+    },
+    {
+      "path": "reproduce/table_reduction_audit.py",
+      "sha256": "cc78271f4f51647260a11e0d2e7a4402fceef3bf8d4d91b711fa0896d92ef8fb",
+      "bytes": 3347
+    },
+    {
+      "path": "reproduce/bisection_law_audit.py",
+      "sha256": "8408b741864b42a7fd03ccf9f228ccfb58881805de1ddf2f7ff6e8a218d32b88",
+      "bytes": 6361
+    },
+    {
+      "path": "reproduce/independent_3x3_audit.py",
+      "sha256": "c663063a57e5f739ba09ce3abd5351a653dd32508b83c4f95937f02269e3fefd",
+      "bytes": 1963
+    },
+    {
+      "path": "results/table-reduction-audit.json",
+      "sha256": "8cb9ff28642a809db02033ee418804320a54f23015e120c6f1c32e2a5c2f16b7",
+      "bytes": 294
+    },
+    {
+      "path": "results/bisection-law-audit.json",
+      "sha256": "00eb43e7fe85321f818be43a1dcbe7886ed7c3a97517f40dbaa1f2cca98249ba",
+      "bytes": 7628
+    },
+    {
+      "path": "references/release-recommended-citations.bib",
+      "sha256": "2d2e2a4020ffa08968fc6bbede012f84cc23a91fda38d0071391378475b961f4",
+      "bytes": 3169
+    },
+    {
+      "path": "README.md",
+      "sha256": "735b8855538fc4d83b40a472fd7c74acfa407174ca75ed84921dbd8b7a03439f",
+      "bytes": 5797
+    },
+    {
+      "path": "CITATION.cff",
+      "sha256": "a7bf1873fa6f69e59c2ed403a5c4a38b1b34cb2dc225c756620900f4702635ee",
+      "bytes": 1178
+    },
+    {
+      "path": "LICENSE.md",
+      "sha256": "1f6e38ad69e8e3495ecbfa4c9e58c45209be76e322391df7dbeb709867017c77",
+      "bytes": 911
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "20832a1ccb11763c376c7fae36298c0a81db011020ade52b3eab0484ed30c0c5",
+      "bytes": 305
+    },
+    {
+      "path": "reproduce/LICENSE",
+      "sha256": "c85c7c8635482dcee71b797849e83a858b0d4f3d40df7b050de53077f2111e43",
+      "bytes": 1070
+    },
+    {
+      "path": "reproduce/export_data.py",
+      "sha256": "213da9487fbf5d8cacc14bb598eea4a641102b7b2fe2f347cae5485f8b27e195",
+      "bytes": 6456
+    },
+    {
+      "path": "reproduce/verify_repo.py",
+      "sha256": "691f2b9f137cc479410cf16859eadf7dccc83f717446730712557f3be8a034d1",
+      "bytes": 2639
+    },
+    {
+      "path": "results/README.md",
+      "sha256": "358ac504564da559ca4990241bc457c33102a40527d03d5bde2f305aeb5ecd0e",
+      "bytes": 1910
+    },
+    {
+      "path": "references/README.md",
+      "sha256": "c8e1435d908297ad3ca5d5ebabf197010f6a250fc0d6c3a8eab33bce7322aeee",
+      "bytes": 1679
+    },
+    {
+      "path": "results/table-reduction-instances.csv",
+      "sha256": "55c692e81a5d0e246c2eca952bdef64546c6401dbd35d964e1638f3f0ce22ced",
+      "bytes": 157296
+    },
+    {
+      "path": "results/independent-3x3-instances.csv",
+      "sha256": "0b9e7899b88c97977b3092c92a894cd3d4c616f0499cead5093dbbdb5566b93a",
+      "bytes": 5816
+    },
+    {
+      "path": "results/independent-3x3-audit.json",
+      "sha256": "9662c5998e82adbbabdb2328ce19a8cb929ea80c4c651d288fe98af114478290",
+      "bytes": 422
+    },
+    {
+      "path": "results/bisection-law-summary.csv",
+      "sha256": "550118087cce852c865c46b90f9a71b7e692fb28fe98ed96d3adab2a3bb13ca2",
+      "bytes": 1157
+    },
+    {
+      "path": "results/bisection-output-laws.csv",
+      "sha256": "e3d78465bc5fedc929eea25f846758b071053b21edc8623fb11f6c8ca2a69d4f",
+      "bytes": 1317
+    },
+    {
+      "path": "results/data-provenance.json",
+      "sha256": "bc94b6983d41ddd7f7bb11523fb595c4bdf22d572822153eddf763bfeb07ff21",
+      "bytes": 1695
+    },
+    {
+      "path": "references/citation-evidence.json",
+      "sha256": "d5a1910e334d045dafcd49aae2e17aca1a4c54c884dd0638fd0bcaea07a587bb",
+      "bytes": 80986
+    },
+    {
+      "path": "references/citation-evidence.csv",
+      "sha256": "2ec15d8f6be2a4efe9ba224bbb1b1a1337730507eb074e0832e50e0ff58afb65",
+      "bytes": 23856
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "sha256": "9582875b81b2cb81f6339bc82549717cce8f57a75683bfa283fccd8ddc99ebd8",
+      "bytes": 458
+    }
+  ]
+}

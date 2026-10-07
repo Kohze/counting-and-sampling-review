@@ -1,0 +1,29 @@
+# Python generated files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# LaTeX build products; retain the prepared review PDF
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+main.pdf
+
+# Local builds and editor files
+build/
+dist/
+tmp/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*~

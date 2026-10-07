@@ -1,0 +1,40 @@
+{
+  "arithmetic": "exact integers and fractions.Fraction in source audits",
+  "date": "2026-10-07",
+  "finite_domains": {
+    "bisection": "nine prescribed rational toy-counter cases; complete nonempty output laws include failure mass",
+    "independent_3x3": "100 seeded instances with totals 0..3; capacities 0,1,2,1073741825",
+    "table_reduction": "all 6885 equal-total 2x2 instances; capacities 0..2 and margins 0..4"
+  },
+  "generated_files": {
+    "bisection-law-summary.csv": {
+      "bytes": 1157,
+      "sha256": "550118087cce852c865c46b90f9a71b7e692fb28fe98ed96d3adab2a3bb13ca2"
+    },
+    "bisection-output-laws.csv": {
+      "bytes": 1317,
+      "sha256": "e3d78465bc5fedc929eea25f846758b071053b21edc8623fb11f6c8ca2a69d4f"
+    },
+    "independent-3x3-audit.json": {
+      "bytes": 422,
+      "sha256": "9662c5998e82adbbabdb2328ce19a8cb929ea80c4c651d288fe98af114478290"
+    },
+    "independent-3x3-instances.csv": {
+      "bytes": 5816,
+      "sha256": "0b9e7899b88c97977b3092c92a894cd3d4c616f0499cead5093dbbdb5566b93a"
+    },
+    "table-reduction-instances.csv": {
+      "bytes": 157296,
+      "sha256": "55c692e81a5d0e246c2eca952bdef64546c6401dbd35d964e1638f3f0ce22ced"
+    }
+  },
+  "generator": "reproduce/export_data.py",
+  "source_data": {
+    "results/bisection-law-audit.json": "00eb43e7fe85321f818be43a1dcbe7886ed7c3a97517f40dbaa1f2cca98249ba"
+  },
+  "source_scripts": {
+    "bisection_law_audit.py": "8408b741864b42a7fd03ccf9f228ccfb58881805de1ddf2f7ff6e8a218d32b88",
+    "independent_3x3_audit.py": "c663063a57e5f739ba09ce3abd5351a653dd32508b83c4f95937f02269e3fefd",
+    "table_reduction_audit.py": "cc78271f4f51647260a11e0d2e7a4402fceef3bf8d4d91b711fa0896d92ef8fb"
+  }
+}

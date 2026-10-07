@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+type: dataset
+message: "Please cite the manuscript when using this review or its scientific reproduction artifacts."
+title: "Approximate Counting and Uniform Sampling: A Critical Review of Matroid Intersections, Contingency Tables, and Graph Switch Chains"
+version: "1.0.0"
+date-released: "2026-10-07"
+authors:
+  - family-names: Gounder
+    given-names: Robin
+    affiliation: Vaionex Corporation
+url: "https://github.com/Kohze/counting-and-sampling-review"
+repository-code: "https://github.com/Kohze/counting-and-sampling-review"
+keywords:
+  - approximate counting
+  - uniform sampling
+  - contingency tables
+  - matroid intersection
+  - graph switch chains
+  - Markov chain Monte Carlo
+preferred-citation:
+  type: article
+  title: "Approximate Counting and Uniform Sampling: A Critical Review of Matroid Intersections, Contingency Tables, and Graph Switch Chains"
+  authors:
+    - family-names: Gounder
+      given-names: Robin
+      affiliation: Vaionex Corporation
+  year: 2026
+  month: 10
+  day: 7
+  url: "https://github.com/Kohze/counting-and-sampling-review"
+  notes: "Focused narrative review manuscript with accompanying finite-audit code and data."

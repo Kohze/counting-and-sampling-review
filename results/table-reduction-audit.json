@@ -1,0 +1,13 @@
+{
+  "arithmetic": "integer and fractions.Fraction",
+  "fisher_probabilities": [
+    "1/6",
+    "2/3",
+    "1/6"
+  ],
+  "instances": 6885,
+  "maximum_count": 3,
+  "nonempty": 1215,
+  "scope": "2 by 2, cell capacities 0..2, row and column margins 0..4",
+  "tv_from_uniform": "1/3"
+}

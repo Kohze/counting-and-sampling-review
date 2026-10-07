@@ -1,0 +1,682 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{enumitem,microtype}
+\usepackage{xurl}
+\usepackage[hidelinks,breaklinks]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}[proposition]{Example}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\repourl}[2]{\href{https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/#1}{#2}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:\nolinkurl{#1}}}
+\providecommand{\AuthorNames}{Robin Gounder}
+\title{Approximate Counting and Uniform Sampling:\\
+A Critical Review of Matroid Intersections, Contingency Tables, and Graph Switch Chains}
+\author{\AuthorNames\thanks{Correspondence: \href{mailto:robin@gounder.com}{robin@gounder.com}.}\\{\small Vaionex Corporation}}
+\date{7 October 2026}
+\hypersetup{pdfauthor={Robin Gounder},
+pdftitle={Approximate Counting and Uniform Sampling: A Critical Review of Matroid Intersections, Contingency Tables, and Graph Switch Chains}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Recent manuscripts in the OpenAI mathematics release present general approximation and sampling guarantees for perfect matchings, common matroid bases, bounded contingency tables, and degree-constrained graphs. Their application consequences depend on the representation of an object, its probability law, the encoding of numerical data, and the distinction between expected and bounded running time. This focused narrative review places six manuscripts within established counting, log-concavity, and Markov-chain frameworks. An evidence matrix compares manuscript statements with the selected Lean statements described in the repository's formalization scope documents. Worked reductions show how bounded tables are common integer polymatroid bases without a labelled expansion, why uniform tables differ from the usual conditional independence law, and why structural zeros can invalidate a switch-chain argument. We make a classical interval self-reduction explicit in the binary encoding model, derive operational error budgets for approximate null-model simulation, and explain the pointwise condition behind exact residual correction. The synthesis traces how count-preserving reductions, probability-law mismatches, and binary representation costs determine the application consequences of the reviewed guarantees.
+\end{abstract}
+\noindent\textbf{Keywords:} approximate counting; uniform sampling; contingency tables;
+matroid intersection; integer polymatroids; perfect matchings; graph switch chains;
+Markov chain Monte Carlo; FPRAS.
+
+\section{Introduction}
+Counting and sampling constrained discrete objects connect combinatorics to statistical inference and optimization. A statistic computed from a network can be compared with the same statistic on graphs with the observed labelled degrees. A feasible allocation matrix can be studied against other matrices with the same margins and capacity bounds. In both cases, feasibility alone is insufficient: conclusions depend on which objects receive which probabilities and on the accuracy of the generator.
+
+The public \texttt{openai/math} collection contains manuscripts and accompanying proof artifacts with different verification coverage \cite{release}. Among its counting and sampling manuscripts, six give a coherent subject for review: an FPRAS for perfect matchings in general graphs \cite{oaiMatching}, an FPRAS for common bases of two matroids \cite{oaiBases}, its extension to binary-capacity integer polymatroids \cite{oaiPolymatroids}, an FPRAS for cell-bounded tables \cite{oaiBoundedTables}, exact uniform sampling of unrestricted tables \cite{oaiTables}, and polynomial mixing of the simple-undirected switch chain \cite{oaiSwitch}. These statements concern related mathematical structures, but they do not share a single interchangeable input model or guarantee.
+
+The motivating question is whether such results open a useful stream of applications. We address it through three questions. What new instances would a stated guarantee include relative to relevant earlier results? Which representations and probability laws survive a reduction? What additional evidence makes a theorem useful as a software contract? The resulting synthesis is intended for readers who need to choose a null model, assess a sampler, or design an independently reproducible implementation.
+
+The paper provides a compact evidence matrix, explicit representation-preserving reductions, and operational examples connecting classical counting and sampling ideas to application requirements. The elementary propositions make the roles of encoding, multiplicity, and probability law explicit. The comparison uses the repository's theorem statements together with its documentation of selected formalization scope.
+
+\section{Scope, sources, and terminology}
+\subsection{Review method and evidence boundaries}
+This focused narrative review selects six manuscripts whose guarantees interact through matching, matroid intersection, transportation constraints, and Markov-chain sampling. We examined their statements and explanatory source sections, manuscript-specific citation instructions, the repository README, and the scope documents for families 113, 114, 115, and 131 \cite{scope113,scope114,scope115,scope131}. Foundational and closely comparable papers were followed through their references and checked against primary publisher pages, author copies, or versioned preprints. The literature cutoff is 7 October 2026.
+
+Repository references are pinned to commit
+\nolinkurl{adc7f1241b42e322a6451854ab7e4b4c146bf78a}, dated 6 October 2026. Dates printed on individual manuscripts are recorded separately. The assessment combines manuscript statements with the repository's formalization scope documents. Accordingly, \emph{documented formal scope} denotes theorem coverage reported in those documents. Build logs and Comparator reports provide distinct evidence of kernel acceptance and theorem comparison.
+
+The repository catalogue identifies available artifacts, while administrative metadata records their review status. A \texttt{sorry} in a challenge statement can be an intentional placeholder specifying the theorem to compare; the proof-bearing solution and the comparison check are separate artifacts. The instructions identify the Comparator checks \cite{comparator}. A reproducible verification report records the exact source revision, toolchain, selected configuration, permitted axioms, command, exit status, and complete log. Mathematical interpretation of the definitions connects a successful build to the intended theorem.
+
+\subsection{Counting and sampling guarantees}
+For an input \(I\), let \(\Omega(I)\) be a finite feasible set and \(Z(I)=|\Omega(I)|\). An FPRAS returns a random nonnegative estimate \(\widehat Z\) satisfying
+\[
+ \Pr\{(1-\varepsilon)Z\leq\widehat Z\leq(1+\varepsilon)Z\}
+ \geq 1-\delta
+\]
+in time polynomial in the encoded input length, \(\varepsilon^{-1}\), and \(\log(\delta^{-1})\). We explicitly record how zero counts are handled. A relative approximation for positive \(Z\) alone does not specify reliable infeasibility detection.
+
+For probability measures \(p,q\) on \(\Omega\), our convention is
+\[
+ \TV(p,q)=\frac12\sum_{x\in\Omega}|p(x)-q(x)|
+          =\sup_{A\subseteq\Omega}|p(A)-q(A)|.
+\]
+For \(Z>0\), an approximate uniform sampler controls distance from \(u(x)=1/Z\); an exact sampler has precisely law \(u\) upon termination and needs a termination guarantee. Empty feasible sets require a separate feasibility or zero-count convention; there is no uniform probability law on an empty set. Expected polynomial time, a high-probability work bound, and a polynomial bound on every execution are distinct guarantees.
+
+Binary encoding is essential when margins or capacities are large. A loop over \(0,\ldots,N\) is generally polynomial in the numerical value \(N\), but exponential in \(\log(N+1)\). Oracle models require an additional distinction: counting oracle calls is meaningful, but an expensive application-specific oracle can dominate wall-clock cost.
+
+\section{Stated advances and prior frameworks}
+\subsection{Earlier frameworks and recent comparators}
+Jerrum, Valiant, and Vazirani established fundamental reductions relating generation and counting for suitable self-reducible structures \cite{JVV1986}. Their framework is not a rule that any counting oracle automatically yields a practical exact sampler: representation, conditional subinstances, error allocation, and access to the required quantities matter. The permanent FPRAS of Jerrum, Sinclair, and Vigoda supplies a major benchmark for nonnegative weighted bipartite perfect matchings \cite{JSV2004}. Counting perfect matchings of arbitrary simple undirected graphs introduces a broader graph class. A direct extension of the permanent chain faces a demonstrated obstacle: \v{S}tefankovi\v{c}, Vigoda, and Wilmes give general graphs on which the JSV-type perfect/near-perfect chain has either very small perfect-matching mass or slow mixing, even with arbitrary weights assigned to hole patterns \cite{SVW2017}. This obstruction concerns that chain, not every possible algorithm. Conversely, a theorem about an unweighted count should not be silently promoted to every weighted partition function.
+
+For matroids, log-concave generating polynomials and high-dimensional walks yield an FPRAS for bases of one matroid using an independence oracle \cite{ALOV2024}. Earlier work gives deterministic approximations and exponential-in-rank relative approximation bounds for common bases \cite{AOV2021}. The Lorentzian framework supplies structural concavity results for important discrete generating polynomials \cite{BH2020}. Common-base intersections nevertheless require additional arguments: they need not themselves satisfy the basis exchange axiom.
+
+For unrestricted integer tables, Dyer and Greenhill give a two-row FPRAS and an almost-uniform sampler \cite{DG2000}. Exact sampling is also established in restricted regimes. Kijima and Matsui use monotone coupling from the past for two-row tables, with reported expected work \(O(n^3\log N)\) \cite{KM2006}. Their underlying technical-report pseudocode generates uniform real draws; that operation bound should be distinguished from a fully audited unbiased-bit implementation. For a fixed number of rows, Dyer combines dynamic programming with rejection to produce uniform samples \cite[Section~3]{Dyer2003}, using arithmetic-operation accounting and row-dependent exponents. Cryan and Dyer provide fixed-row approximate counting \cite{CD2003}, while Gopalan and coauthors give a deterministic FPTAS with logarithmic dependence on the numerical margins and row-dependent exponents \cite[Theorem~1.3]{Gopalan2011}. These results already accommodate large binary margins within fixed-dimension restrictions.
+
+Large-margin geometric methods give another predecessor regime. Dyer, Kannan, and Mount reduce table sampling to convex-body sampling \cite{DKM1997}; Morris weakens the required quantitative lower bounds on the margins \cite{Morris2002}. These approximate guarantees require sufficiently large row and column sums, rather than arbitrary small margins. Cell-bounded tables with a fixed row count have an FPRAS \cite{CDR2010}, and binary tables have all-margin annealing algorithms \cite{BBV2007}.
+
+Exact methods are also directly relevant to a practical workbench. Miller and Harrison exploit repeated column sums to count binary and nonnegative integer fixed-margin matrices exactly and then sample uniformly \cite{MH2013}. Their complexity is polynomial when the maximum column sum is a fixed constant; it grows rapidly with that parameter in general. Their reported real-data examples show why specialized exact methods should be considered before implementing a universal construction. Arman, Gao, and Wormald give an exact uniform sampler with expected \(O(N)\) work when \(5\Delta^4<N\), where \(\Delta\) is the maximum row or column sum \cite{AGW2024}. This is a restricted sparse regime. Moreover, \(N\leq\min(m,n)\Delta\), so its hypothesis implies \(\Delta^3<\min(m,n)/5\): within that regime, \(N\) is itself polynomially bounded by the dimensions. Its numerical work bound is therefore not a reason to dismiss it as exponentially costly on its valid inputs; precision and random-bit accounting still belong in an implementation comparison.
+
+Thus \emph{arbitrary margins} alone does not identify the new generality. The comparison must specify whether both dimensions vary, whether individual cell bounds or forbidden positions are allowed, whether the output law is exact, and whether the cost is a full binary-bit bound, an arithmetic-operation bound, or an expectation. None of these restricted predecessors supplies all the reviewed general guarantees, but several may be preferable applications within their valid regimes.
+
+The switch-chain literature has treated regular, irregular, and stability-defined degree families. Greenhill's survey provides a broad account \cite{Greenhill2021}. The unified approach proves rapid mixing for P-stable families across several graph models \cite{Unified2022}, rather than for every individual graphical sequence. Importantly, Fu, Qin, and Wang's July 2026 preprint already asserts a spectral-gap bound for every feasible binary fixed-margin matrix \cite{FQW2026}. Its bipartite state space differs from simple undirected graphs, whose adjacency matrices must remain symmetric. The September manuscript must therefore be assessed against both the earlier restricted-family results and this concurrent bipartite advance.
+
+Also within the cutoff, Chen and Liu's 5 October preprint states an independence-oracle FPRAS and an almost-uniform sampler for common matroid bases \cite{ChenLiu2026}. Its Appendix~C.9 requires unary coordinate capacities for integer-family intersections and polynomially bounded total cell capacity for bounded tables. These concurrent guarantees have encoding restrictions distinct from the binary-capacity claims in Table~\ref{tab:evidence}. Printed manuscript dates alone do not establish public priority.
+
+\subsection{Evidence matrix}
+Table~\ref{tab:evidence} compares the release's mathematical statements with the scope identified in its Lean documentation. Each statement retains the assumptions of its original manuscript.
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.29\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}@{}}
+\caption{Selected claims, runtime models, and documented formal scope.}\label{tab:evidence}\\
+\toprule
+Problem and manuscript & Stated computational guarantee & Selected documented scope and boundary\\
+\midrule
+\endfirsthead
+\toprule
+Problem and manuscript & Stated computational guarantee & Selected documented scope and boundary\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+General-graph perfect matchings \cite[Theorem~1.1]{oaiMatching}
+&
+Relative approximation with polynomial work on every random tape; exact zero output on infeasible instances.
+&
+Family 113 documents an FPRAS for finite simple undirected graphs. Its additional entropy and triangle-expansion statements have their own scope; the paper's sharp global face-dimension bound is not part of the selected triangle statement \cite{scope113}.\\[4pt]
+Common matroid bases \cite[Theorem~1.1]{oaiBases}
+&
+FPRAS with polynomially bounded oracle calls and bit operations on every tape.
+&
+Family 114 specifies two equal-rank matroids on an enumerated ground set, with independence oracles. This is a count of common subsets, with zero returned on every execution when empty \cite{scope114}.\\[4pt]
+Common integer polymatroid bases \cite[Theorem~1.1]{oaiPolymatroids}
+&
+FPRAS with binary rank data and exact rank-value oracles; every integer vector has weight one.
+&
+The family 114 heading mentions integer polymatroids, but its linked paper and statement concern matroid bases. It does not document formal coverage of the 5 October binary-capacity extension \cite{scope114}.\\[4pt]
+Cell-bounded integer tables \cite[Theorem~1.1; Section~8]{oaiBoundedTables}
+&
+FPRAS with both dimensions variable and margins and bounds binary encoded; Section~8 also derives bounded-time approximate uniform generation.
+&
+Family 115 includes this counting guarantee, including zero bounds and exact zero output when infeasible. Its exact-sampling guarantee concerns tables without cell bounds \cite{scope115}.\\[4pt]
+Unrestricted integer tables \cite[Theorems~1.1 and~6.4]{oaiTables}
+&
+Exact uniform sampling in expected polynomial bit time; a companion bounded-time sampler has TV error at most \(2^{-k}\).
+&
+Family 115 documents both sampling statements for nonnegative integer tables with arbitrary equal-total margins. Individual cell restrictions are not included in the sampling scope \cite{scope115}.\\[4pt]
+Simple-undirected graph switches \cite[Theorem~1.1; Corollary~1.2]{oaiSwitch}
+&
+For the specified lazy four-vertex chain, \(t_{\rm mix}(1/4)\leq2n^8\), \(n\geq4\); the manuscript also states an exact sampler in expected polynomial time.
+&
+Family 131 documents connectivity, mixing, and a gap of at least \([24n^2\binom n4]^{-1}\) for nonsingleton spaces. The manuscript's exact-sampling algorithm is explicitly outside these selected estimates \cite{scope131}.\\
+\end{longtable}
+\endgroup
+
+The matrix ties each documented statement to its input model and feasible set. Coverage follows the selected definitions, including when counting and sampling results appear in the same family. In particular, a table counter allowing structural zeros and an unrestricted table sampler address different supports.
+
+The stated guarantees extend theoretical coverage to general input families. Their implementation costs depend on the displayed complexity bounds and the additional program operations. In the unrestricted-table manuscript's bounded approximate sampler, \(T=d^{200}(k+b)^2\) is the transition count \emph{per trial}, and up to \(J_o=d^4(k+1)\) trials are run \cite[Section~6.2, equation~(6.2)]{oaiTables}. Thus the transition cap is \(J_oT=d^{204}(k+1)(k+b)^2\), with up to \(J_o\) completion draws and the associated preprocessing and bit-arithmetic costs in addition. Here \(d\) scales with dimensions and \(b\) with numerical bit length. A transition count is not the complete program cost. The graph bound gives \(2(50)^8=7.8125\times10^{13}\) attempted steps for \(n=50\), at the stated \(1/4\) accuracy \cite[Theorem~1.1]{oaiSwitch}. These are conservative sufficient bounds, not observed runtimes or lower bounds on the cost of successful implementations.
+
+\subsection{Mechanisms, obstructions, and implementation costs}
+The manuscripts use distinct walk architectures. Table~\ref{tab:mechanisms} compares the mechanisms described in their proofs, with attention to state representations and the quantities controlled by each argument.
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.43\textwidth}>{\raggedright\arraybackslash}p{0.29\textwidth}@{}}
+\caption{Manuscript mechanisms and computational costs beyond endpoint guarantees.}\label{tab:mechanisms}\\
+\toprule
+Family & Obstruction and mechanism & Consequence for an implementation\\
+\midrule
+\endfirsthead
+\toprule
+Family & Obstruction and mechanism & Consequence for an implementation\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Perfect matchings
+&
+The ordinary perfect/near-perfect state space can bottleneck. The manuscript balances hole ratios, enlarges a colored graph, and uses several matching coordinates with cycle exchanges and an interaction-energy argument \cite[Section~1.2]{oaiMatching}.
+&
+The lifted product law and its observables must be preserved; replacing it by the familiar single-coordinate chain does not inherit the claimed gap.\\[4pt]
+Common matroid bases
+&
+A paired-ground-set encoding is annealed through positive rank-deficiency weights. Empty/full pair defects balance types; quadratic transport controls the transversal trace and selected ratio observables \cite[Section~1, proof strategy]{oaiBases}.
+&
+Exact independence queries, adaptive multiplier estimates, and restart caps are part of the guarantee; it is not a generic gap theorem for every defect observable.\\[4pt]
+Cell-bounded tables
+&
+Large entries are integrated through forest completion weights; only bounded small coordinates are expanded. Reciprocal multiplicity weights and two quadratic extensions support the paired transport argument \cite[Sections~1.2 and~4--7]{oaiBoundedTables}.
+&
+Approximate completion weights, bin sizes and labelled multiplicities must be included in the actual output law.\\[4pt]
+Integer polymatroid bases
+&
+Polynomial-range part totals are retained as discrete variables while other coordinates use weighted-volume approximation; the construction avoids expansion into all capacity units \cite[Section~1]{oaiPolymatroids}.
+&
+Exact rank-value access and its internal cost remain separate from the external binary arithmetic bound.\\[4pt]
+Unrestricted tables
+&
+Padding and auxiliary defect states enable completion updates. A finite dyadic law is computed for a rare residual-correction branch \cite[Sections~2 and~6]{oaiTables}.
+&
+Per-trial work, repetitions, exact completion arithmetic and law-tabulation cost all matter; expected exact work is not a per-run cap.\\[4pt]
+Simple graph switches
+&
+Symmetry-preserving neighbor redistributions are compared with local switches; conditional variance estimates control their interactions \cite[Sections~2--6]{oaiSwitch}.
+&
+The degree model, proposal probability and rejected attempts must match the proved kernel.\\
+\end{longtable}
+\endgroup
+
+Two distinctions are particularly consequential. In the common-base and bounded-table constructions, control of the transversal trace and the observables used for counting is sufficient for the algorithm; it should not be reported as a full spectral-gap bound for arbitrary fluctuations inside every defect class. The general matching construction instead uses a product-state interaction argument to pass from its initial energy comparison to arbitrary functions. These are different analytical requirements, even though both culminate in counting guarantees.
+
+Numerical representation creates a second distinction. A bounded-range combinatorial lift may be usable with ordinary finite data structures; the reviewed large-capacity constructions instead retain compact data through weighted completion or rank-value access. The table-to-polymatroid reduction below identifies a common feasible set, but does not make those two algorithms identical in cost. The practical choice should follow the bottleneck actually present in the application: a costly oracle, a completion-weight computation, a mixing certificate, or a rare exact-correction branch.
+
+\section{Representations that preserve the count}
+\subsection{Bipartite matchings as common matroid bases}
+Let \(G=(L\cup R,E)\) be bipartite with \(|L|=|R|=n\). Partition \(E\) by its left endpoints to define one partition matroid, and by its right endpoints to define another, both allowing at most one selected edge per part. If either matroid has rank below \(n\), no perfect matching exists. Otherwise a common base of size \(n\) uses exactly one edge at every left and every right vertex. Thus common bases and perfect matchings are in bijection.
+
+This reduction keeps each matching's weight one and uses a ground set of explicit edges. It explains one connection between matroid intersection and matching counts, but does not turn the bipartite model into general undirected matching by a change of terminology.
+
+\begin{example}[The common-base family need not be a matroid]
+In \(K_{2,2}\), write \(a=(1,1)\), \(b=(1,2)\), \(c=(2,1)\), and \(d=(2,2)\).
+The two common bases are \(\{a,d\}\) and \(\{b,c\}\).
+Exchanging \(a\) for either \(b\) or \(c\) produces a set that violates one partition constraint. Hence the common bases fail the basis exchange axiom. The single-matroid sampling theorem cannot be applied merely by calling this intersection another matroid.
+\end{example}
+
+\subsection{Bounded tables as common integer polymatroid bases}
+We spell out a transportation specialization of the classical polymatroid framework \cite{Edmonds2003}. It also exposes the binary-size and multiplicity issues emphasized by the recent integer-polymatroid manuscript \cite{oaiPolymatroids}.
+
+Let \(r\in\Z_{\geq0}^m\), \(c\in\Z_{\geq0}^n\), and \(u\in\Z_{\geq0}^{m\times n}\), with
+\(N=\sum_i r_i=\sum_j c_j\). Put \(E=[m]\times[n]\) and define
+\[
+ \begin{aligned}
+ f_r(S)&=\sum_{i=1}^m
+      \min\!\left\{r_i,\sum_{j:(i,j)\in S}u_{ij}\right\},\\
+ f_c(S)&=\sum_{j=1}^n
+      \min\!\left\{c_j,\sum_{i:(i,j)\in S}u_{ij}\right\}.
+ \end{aligned}
+\]
+Both functions are normalized, nondecreasing, integral, and submodular. For example, within a row, adding a cell contributes its capacity only up to the remaining truncation threshold; that marginal contribution decreases as the set grows. Summing these diminishing-return functions proves submodularity.
+
+For a rank function \(f\), write
+\[
+ B_{\Z}(f)=\{x\in\Z_{\geq0}^{E}:x(S)\leq f(S)\ 
+             \text{for all }S\subseteq E,\ x(E)=f(E)\}.
+\]
+
+\begin{proposition}[A count-preserving transportation representation]
+If \(f_r(E)<N\) or \(f_c(E)<N\), no table with margins \(r,c\) and bounds \(u\) exists.
+Otherwise \(f_r(E)=f_c(E)=N\), and identifying a table with its cell vector is a bijection between
+\[
+ \Omega(r,c,u)=
+ \left\{X\in\Z_{\geq0}^{m\times n}:
+ \begin{array}{l}
+ \sum_jX_{ij}=r_i\quad\text{for every }i,\\
+ \sum_iX_{ij}=c_j\quad\text{for every }j,\\
+ X_{ij}\leq u_{ij}\quad\text{for every }i,j
+ \end{array}\right\}
+\]
+and \(B_{\Z}(f_r)\cap B_{\Z}(f_c)\).
+The two rank-value oracles can be evaluated using a polynomial number of bit operations in the explicit binary input length.
+\end{proposition}
+\begin{proof}
+For any feasible table, its entries in a selected portion of row \(i\) sum to at most both \(r_i\) and the capacities of that portion. Summing over rows gives \(x(S)\leq f_r(S)\); columns give the second inequality. Since \(x(E)=N\), either rank deficit rules out feasibility.
+
+Conversely, suppose the two total ranks equal \(N\) and \(x\) is a common integer base. The full row subset gives \(\sum_jx_{ij}\leq r_i\). Since all row sums together equal \(\sum_i r_i=N\), every row inequality is an equality. The same argument applies to columns. Singleton inequalities give \(x_{ij}\leq u_{ij}\). These are exactly the table constraints, and the identification is one-to-one.
+
+To evaluate either rank function, scan the indicated cells, add binary capacities within each block, truncate, and sum. The number of operations is polynomial in \(mn\), and integer lengths are polynomial in the given encoding. There is no expansion into \(N\) units.
+\end{proof}
+
+Equality of the two total ranks is only a necessary preliminary check, not a sufficient feasibility test for their intersection. The proposition remains valid for \(N=0\), when the sole feasible vector is zero. Unrestricted tables can be represented by choosing \(u_{ij}=\min(r_i,c_j)\), which imposes no additional restriction on any feasible table.
+
+With an FPRAS satisfying the binary-encoding and rank-oracle hypotheses, this representation gives a count-preserving reduction for bounded tables. Table~\ref{tab:evidence} separately records family 114's documented matroid coverage.
+
+\subsection{Why labelled expansion changes the law}
+Suppose coordinate \(e\) is represented by \(u_e\) distinct labels and a vector with value \(x_e\) is represented by choosing \(x_e\) labels. Its number of labelled representations is
+\[
+ w(x)=\prod_{e\in E}\binom{u_e}{x_e}.
+\]
+A uniform labelled sample therefore induces probability proportional to \(w(x)\), unless an explicit correction cancels that multiplicity. It does not induce uniformity over vectors merely because the projection is onto all feasible vectors. Furthermore, the expanded ground set has size \(\sum_eu_e\), which can be exponential in the capacities' binary lengths.
+
+These are separate failures: even an efficient implementation of a labelled lift can count the wrong objects, and even a multiplicity-correct lift can be too large. A useful reduction should report the fiber cardinality of its projection as well as its computational size. The polymatroid manuscript addresses both fiber multiplicities and encoding costs \cite{oaiPolymatroids}.
+
+
+\subsection{Binary-depth count-to-sample self-reduction}
+Sampling requires counts for the conditional subinstances generated by the reduction. The next consequence specifies sufficient access for bounded tables. It is a specialization of classical count-to-generation reasoning \cite{JVV1986}; the bounded-table manuscript already gives interval-bisection sampling consequences in its Section~8 \cite{oaiBoundedTables}. The presentation makes the binary encoding and accumulated error budget explicit.
+
+\begin{proposition}[Bounded-time approximate generation from conditional counts]
+Let \(\Omega\) be a nonempty cell-bounded table family with explicitly listed binary margins and caps \(u_e\), where \(e\) indexes cells. Suppose every residual bounded-table instance has a counter returning a nonnegative rational estimate with relative error at most \(a\), except with probability at most \(b\), using fresh randomness at each call. The guarantee is uniform over residual instances, including adaptive calls; for zero counts, relative accuracy means returning zero. Suppose its work and output length are polynomially bounded on every execution in the input bit length, \(a^{-1}\), and \(\log(b^{-1})\).
+Set
+\[
+ L=\sum_e\left\lceil\log_2(u_e+1)\right\rceil.
+\]
+For \(0<a\leq1/2\), \(0<b<1\), and integer \(K\geq1\), there is an interval-bisection procedure using at most \(2L\) counter calls and at most \(KL\) branch bits, whose output law \(p\), including a failure symbol, satisfies
+\[
+ \TV(p,u_\Omega)\leq
+ L\bigl(a+2b+2^{-K}\bigr).
+ \tag{*}\label{eq:bisection-budget}
+\]
+Here \(u_\Omega\) assigns no mass to failure. A deterministic replacement of failure by a fixed feasible table preserves this TV bound. Feasibility and this table can be found by integral bipartite flow.
+\end{proposition}
+\begin{proof}
+Maintain an interval \([\ell_e,h_e]\) for each cell, initially \([0,u_e]\), and bisect a non-singleton interval into two consecutive subintervals. The maximum number of splits along any branch is \(L\): an interval of \(u_e+1\) values has bisection depth at most \(\lceil\log_2(u_e+1)\rceil\). This depth depends on binary lengths, not on \(\sum_e u_e\).
+
+Every node is still a bounded-table counting problem. Subtract all lower bounds:
+\(Y_{ij}=X_{ij}-\ell_{ij}\), replace the margins by
+\[
+ r'_i=r_i-\sum_j\ell_{ij},
+ \qquad c'_j=c_j-\sum_i\ell_{ij},
+\]
+and use caps \(h_{ij}-\ell_{ij}\). A negative residual margin certifies emptiness; such a child is assigned count zero without calling the counter. Otherwise this is a bijection, with equal residual totals and polynomial-size binary data. An integral flow on source--row--column--sink arcs checks feasibility; residual row and column arcs prescribe the margins, and cell arcs prescribe the capacities.
+
+At a nonempty node let the two true child counts be \(z_0,z_1\), and let \(q=z_0/(z_0+z_1)\). Choosing children with these probabilities generates the uniform leaf law by telescoping conditional counts. For two accurate estimates, write \(\widehat z_i=z_i(1+e_i)\), \(|e_i|\leq a\), when \(z_i>0\); a zero count has accurate estimate zero. The estimated left probability \(\widehat q\) obeys
+\[
+ |\widehat q-q|
+ =\left|\frac{q(1-q)(e_0-e_1)}
+ {1+qe_0+(1-q)e_1}\right|
+ \leq\frac{a}{2(1-a)}\leq a,
+\]
+with the zero-child cases interpreted directly. Two fresh calls fail with conditional probability at most \(2b\). If their denominator is zero, an arbitrary fixed branch rule keeps the program defined.
+
+To bound the coin cost on every execution, use \(K\) fresh unbiased bits, independent of the counter calls, to choose an integer uniformly in \(\{0,\ldots,2^K-1\}\), and branch left below \(\lfloor2^K\widehat q\rfloor\). Its left probability differs from \(\widehat q\) by at most \(2^{-K}\). Thus at every nonempty node the implemented and ideal branch kernels have TV distance at most \(a+2b+2^{-K}\), after averaging the fresh counter randomness. Coupling the kernels until their first disagreement and summing over at most \(L\) steps proves \eqref{eq:bisection-budget}. An empty visited node or an infeasible final leaf returns failure. Both estimates being accurate never selects an empty child, so this exceptional output is also covered by the coupling bound.
+
+Finally, mapping failure to a fixed member of \(\Omega\) is a deterministic pushforward that leaves \(u_\Omega\) unchanged. Total variation contracts under such a map. This replacement is not conditioning on the procedure's success.
+\end{proof}
+
+When \(L=0\), feasibility leaves the unique zero table and no counter or branch calls are needed. For \(L>0\) and a requested TV error \(0<\varepsilon<1\), choose \(a=\varepsilon/(3L)\), \(b=\varepsilon/(6L)\), and \(K\) with \(2^{-K}\leq\varepsilon/(3L)\). The bound is then at most \(\varepsilon\), with polynomial work on every execution under the counter hypotheses. Empty original families are diagnosed separately. Using exact rational Bernoulli decisions instead of truncated coins removes the \(2^{-K}\) term, but typically gives an expected random-bit cost rather than a bound on every execution. Both versions provide approximate uniform sampling; exact generation additionally requires the residual-correction conditions discussed below or another exact-sampling construction. The tolerance scale also matters: this self-reduction is polynomial in \(\varepsilon^{-1}\), so requesting \(\varepsilon=2^{-k}\) need not be polynomial in \(k\). The unrestricted-table manuscript's polynomial dependence on accuracy bits is a stronger type of approximate guarantee. It cannot be inferred merely by placing a binary-encoded bounded-table FPRAS inside this self-reduction.
+
+\section{The probability law is part of the application}
+\subsection{Uniform tables and conditional independence}
+The usual fixed-margin independence distribution is not uniform over integer tables. One derivation starts from independent Poisson counts with means \(a_i b_j\), with \(a_i,b_j>0\) so that conditioning on feasible margins has positive probability. Conditioning on row and column totals makes the factors \(\prod_i a_i^{r_i}\prod_j b_j^{c_j}\) constant across feasible tables. The remaining weight is
+\[
+ q(X)\ \propto\ \frac{1}{\prod_{i,j}X_{ij}!}.
+\]
+The standard normalization is
+\[
+ q(X)=
+ \frac{\prod_i r_i!\prod_j c_j!}
+      {N!\prod_{i,j}X_{ij}!}.
+\]
+Patefield's algorithm and the documented \texttt{scipy.stats.random\_table} interface concern this conditional independence distribution \cite{Patefield1981,ScipyRandomTable}. A theorem about uniform integer tables addresses a different null model.
+
+\begin{example}[A law discrepancy visible in three states]
+For \(r=c=(2,2)\), the feasible tables are
+\[
+ X_a=\begin{pmatrix}a&2-a\\2-a&a\end{pmatrix},
+ \qquad a=0,1,2.
+\]
+The uniform probabilities are \((1/3,1/3,1/3)\), whereas the conditional independence probabilities are \((1/6,2/3,1/6)\). Their total-variation distance is
+\[
+ \frac12\left(\frac16+\frac13+\frac16\right)=\frac13.
+\]
+For the event \(a=1\), the probability differs by \(1/3\). Increasing the sample size does not remove this discrepancy between target laws.
+\end{example}
+
+If this conditional law is \emph{further conditioned} on a nonempty feasible binary support and renormalized, every factorial in its weight is one, so it becomes uniform on that support. The displayed unrestricted normalization is not itself the normalization of the binary-conditioned law. For example, the binary support in the preceding example contains only \(X_1\), which has mass \(2/3\) before this additional conditioning and mass one afterward. The law discrepancy persists for general integer tables. Additional odds weights or restrictions define still other distributions and require their own sampler analysis.
+
+\subsection{Structural zeros and graph-model conventions}
+A zero cell bound specifies a forbidden position. Such constraints are included in the claimed bounded-table counter, but excluded from the unrestricted-table sampling statement. They can also break the connectivity of a local swap chain.
+
+\begin{example}[A feasible support with no legal switches]
+Consider a \(3\times3\) binary table with every row and column sum equal to one. Permit only cells
+\[
+ (1,1),(1,2),(2,2),(2,3),(3,3),(3,1).
+\]
+The host is a six-cycle. There are two feasible tables, its two alternating perfect matchings. A \(2\times2\) switch needs a four-cycle of permitted cells, and this host has none. Consequently, the restricted switch chain has two isolated states. A mixing guarantee on the complete bipartite host says nothing about this chain.
+\end{example}
+
+Similarly, uniform labelled simple graphs with fixed degrees are different objects from graphs obtained by projecting labelled stub pairings. The latter construction allows multiple edges and loops before conditioning. For a fixed degree sequence, conditioning uniform stub pairings on simplicity does yield the uniform simple-graph law, because each such graph has the same number of pairing representations. The rejection cost depends on the simplicity probability, however, and other projections can introduce nonconstant multiplicities. Directed, bipartite, and simple-undirected spaces need distinct transition conventions. In the reviewed simple-undirected chain, the unit of time is an attempted proposal, including holds and rejected moves \cite{oaiSwitch}. Counting accepted switches alone changes the clock. More precisely, if \(P\) is a reversible kernel and \(e(x)=1-P(x,x)>0\), the chain that records only departures has off-diagonal probabilities \(P(x,y)/e(x)\) and stationary mass proportional to \(\pi(x)e(x)\). Detailed balance follows directly by multiplying these expressions. Thus a uniform attempted-step law need not remain uniform after conditioning every recorded step on departure.
+
+\subsection{From a TV bound to an inference budget}
+Suppose \(p\) is an implemented law with \(\TV(p,u)\leq\varepsilon\), and \(A\) is the event that a chosen statistic is at least its observed value. Let \(\theta=u(A)\), and obtain \(B\) independent samples from \(p\), with empirical event frequency \(\widehat\theta\). Since \(|p(A)-\theta|\leq\varepsilon\), Hoeffding's inequality \cite{Hoeffding1963} gives, for \(0<\alpha<1\),
+\[
+ \Pr\!\left\{|\widehat\theta-\theta|
+ >\varepsilon+\sqrt{\frac{\log(2/\alpha)}{2B}}\right\}
+ \leq\alpha.
+\]
+The formula separates sampling bias from Monte Carlo uncertainty. It is a bound for estimating a tail probability, not by itself a proof that a particular Monte Carlo testing procedure has exact size.
+
+Independence is an assumption here: successive states of one Markov chain do not satisfy it automatically. Nor does a flat trace plot establish a TV guarantee. If an application's full decision rule depends on \(B\) independent outputs, a conservative coupling gives \(\TV(p^{\otimes B},u^{\otimes B})\leq B\varepsilon\). These two bounds answer different questions: accuracy of one estimated probability and accuracy of the joint experiment. A sampler interface should make the relevant error budget explicit.
+
+\section{Exactness, mixing, and computation}
+\subsection{What a spectral gap supplies}
+For a finite, irreducible, reversible lazy chain with at least two states, stationary law \(\pi\), spectral gap \(\gamma\), and initial state \(x\), the usual \(L^2\)-to-TV bound \cite[Chapter~12]{LP2017} is
+\[
+ \TV(P^t(x,\cdot),\pi)
+ \leq\frac12\sqrt{\pi(x)^{-1}-1}\,(1-\gamma)^t
+ \leq\frac12\pi(x)^{-1/2}e^{-\gamma t}.
+\]
+Thus a gap estimate must be combined with the stationary minimum mass, a clock convention, and the cost of producing each transition. For a uniform law on \(M\) objects, \(\log M\) enters the sufficient time bound. This factor can still be polynomial in input length even when \(M\) is exponentially large.
+
+For the binary-table comparator, the relevant preprint asserts
+\(\gamma\geq[\binom m2\binom n2]^{-1}\) when the nontrivial dimensions permit swaps \cite{FQW2026}. For the released simple-undirected convention, Table~\ref{tab:evidence} gives a different gap and mixing guarantee. These constants cannot be exchanged between kernels solely because both updates are called switches.
+
+\subsection{Residual correction requires a pointwise condition}
+The residual-mixture construction studied by G\"obel, Liu, Manurangsi, and Pappik explains how an approximate sampler can be corrected exactly using a rare, expensive computation \cite{GLMP2024}. The following elementary calculation states the condition behind it.
+
+\begin{proposition}[Uniform residual correction]
+Let \(u\) be uniform on a nonempty set of \(M\) states, let \(p\) be a probability law on the same set, and suppose \(\TV(p,u)\leq\eta\).
+If \(0<\delta<1\) and
+\[
+ \delta\geq\frac{M\eta}{1+M\eta},
+\]
+then
+\[
+ r(z)=\frac{u(z)-(1-\delta)p(z)}{\delta}
+\]
+is a probability law, and \((1-\delta)p+\delta r=u\).
+\end{proposition}
+\begin{proof}
+For each state \(z\), the singleton-event bound gives
+\(p(z)\leq M^{-1}+\eta\). The assumed inequality is equivalent to
+\((1-\delta)(M^{-1}+\eta)\leq M^{-1}\), so the numerator defining \(r\) is nonnegative. Its sum is \(1-(1-\delta)=\delta\). The mixture identity follows by substitution.
+\end{proof}
+
+This is a sufficient condition, not a necessary characterization of every correctable law. It shows why a small absolute TV error may need to be much smaller than \(1/M\) for a very rare correction branch. Efficient dependence on \(\log(1/\eta)\), together with an upper bound on \(M\), can make such accuracy requests affordable in a proof-level complexity analysis.
+
+Let the ordinary branch have expected cost \(T_p\), the residual branch \(T_r\), and the exact branch-decision procedure cost \(T_b\). The mixture has expected cost
+\[
+ T_b+(1-\delta)T_p+\delta T_r.
+\]
+An exponential \(T_r\) can therefore coexist with a polynomial expectation when \(\delta\) is sufficiently small. An efficient implementation requires an algorithm for evaluating \(r\), a bound on \(T_r\), and a procedure for sampling the residual law. These are additional hypotheses of an algorithmic correction theorem. In particular, blindly enumerating all random tapes can cost exponentially in the polynomial accuracy-bit budget and defeat the intended expectation bound.
+
+Implementing the residual requires the actual distribution of the program, including rounding choices, fallbacks, and stopping rules; the stationary distribution of an idealized chain is not enough. A usable finite transition structure or law-tabulation routine must be accompanied by its own cost bound, including its dependence on precision. The unrestricted-table manuscript explicitly supplies such a law-tabulation argument for its correction \cite{oaiTables}. A software implementation would have to preserve that structure and account for exact arithmetic.
+
+An \emph{expected polynomial time} guarantee controls mean work; latency quantiles require additional tail estimates. Markov's inequality yields a tail bound proportional to the expectation divided by the threshold; stronger tail statements require their own proof. The general exact-sampling paper also gives high-probability guarantees under its specified constructions \cite{GLMP2024}. High-probability work bounds and per-execution caps are distinct guarantees.
+
+\subsection{Random-bit accounting}
+An algorithm using at most \(b\) independent unbiased random bits on every execution assigns each output a probability that is an integer multiple of \(2^{-b}\), by padding shorter executions with ignored bits. It cannot sample exactly uniformly from three objects, since \(1/3\) is not dyadic. Exact sampling in the unbiased-bit model can therefore require an unbounded number of bits, even for a trivial feasible set.
+
+Rejection-based generation of a uniform integer can still have small expected cost. Exactness, almost-sure termination, expected cost, and bounded approximate cost therefore describe distinct aspects of a sampler. Real-number random draws or unit-cost arithmetic pseudocode also require a bit-model implementation before comparison with the reviewed bit-time claims.
+
+\section{Applications and a reproducible development agenda}
+A useful initial application is a null-model workbench that makes its target explicit: uniform integer tables, conditional independence tables, uniform binary fixed-margin matrices, or uniform labelled simple graphs with prescribed degrees. The workbench can be built from existing feasible generators and exact small-instance enumeration. It can expose instance restrictions, record the algorithm and kernel version, and attach an accuracy statement only where a matching theorem and implementation are available. The reviewed guarantees identify candidate additional backends whose implementations can be checked against the corresponding hypotheses.
+
+For bounded allocations, the transportation representation supplies a clear input schema and an independent feasibility check. A counter can report the size of the feasible design space, while a correctly weighted sampler can explore alternative allocations. Optimization and statistical analysis add an explicit objective or target law to this feasible-space description.
+
+A reproducible implementation paper should compare relevant earlier methods within their valid subfamilies. Two-row and fixed-row table instances deserve their specialized exact and approximate baselines; bounded-column instances should include exact recursion \cite{MH2013}, and sparse instances should include the linear expected-work method on its valid subfamily \cite{AGW2024}. Binary tables need comparison with annealing and swap methods; graphs need exact enumeration at small sizes and degree-family-specific methods where applicable. Test instances should include unique feasible objects, empty bounded-table instances, zero margins, highly unequal margins, structural zeros, and near-boundary degree sequences. Report attempted proposals, accepted moves, random bits where measurable, integer sizes, memory, and wall-clock time. Quantiles and observed correction-branch costs are useful alongside means.
+
+Correctness checks can be stronger than a visual sampling diagnostic. On finite test spaces, construct the transition matrix exactly, check row sums and detailed balance, identify connected components, compute the output law of capped procedures including fallbacks, and compare it with the declared target. Such checks provide finite-instance implementation certificates. Empirical frequencies and autocorrelation summaries remain complementary performance evidence.
+
+The companion finite audit for this review verifies the table representation on \(6{,}885\) small \(2\times2\) inputs: all four capacities range from zero to two, both row margins from zero to four, and both column margins from zero to four with matching totals. Direct feasible-table enumeration agrees in every case with enumeration of integer common bases satisfying all \(2^4\) subset inequalities. There are \(1{,}215\) nonempty instances, and the maximum count is three. Exact rational arithmetic also verifies the three-state probability example. The proof establishes the general representation, while these deterministic checks corroborate its finite-instance consequences.
+
+A second small audit computes the complete output law of interval bisection with prescribed rational toy counters and fresh bounded-bit choices. It covers exact counts, controlled relative errors, independent counter failures, a unique table, and an empty support. For the three-state example with exact counts and \(K=8\), the probabilities are \((85/256,85/256,43/128)\), with TV error \(1/384\leq L2^{-K}=1/32\). It also checks feasibility, retained failure mass, and deterministic failure replacement. The audit evaluates the stated finite-law construction with prescribed toy counter distributions.
+
+
+The strongest near-term research questions concern the gap between universal complexity bounds and practical kernels. Which inequalities can be sharpened without altering the target law? Can a proof-level weighted lift be implemented without its large auxiliary costs? Which correction mechanisms produce manageable runtime tails? Can exact small-instance certificates be integrated with theorem-linked metadata for larger instances? The review's examples suggest that preserving representations and laws is a prerequisite for answering these questions.
+
+\section{Conclusions and limitations}
+The selected manuscripts describe a coherent expansion of counting and sampling theory. Their stated guarantees for general undirected matching, common-base intersections, binary-capacity integer allocations, and unrestricted varying-dimension tables cover important cases beyond established specialized algorithms. The common themes are representation-aware weighting, concavity or variance control, and careful implementation of finite randomized laws.
+
+Application design depends on distinctions between uniform integer-table and conditional independence laws, unrestricted degree-constrained spaces and forbidden-edge hosts, and expected exact sampling and capped approximate routines. These distinctions yield concrete validation tasks and reusable software contracts today.
+
+The assessment draws on manuscript statements, formalization scope documents, primary literature, and explicit mathematical and finite-law analyses. The evidence matrix can incorporate later corrections or independent analyses. Implementation comparisons require measured program costs alongside the source complexity bounds. The resulting classification identifies the object, representation, law, accuracy, cost model, and exact statement supported by each source.
+
+\section*{Availability}
+The source snapshot and manuscript references are identified above. The accompanying source bundle includes the LaTeX source, \nolinkurl{reproduce/table_reduction_audit.py}, \nolinkurl{reproduce/bisection_law_audit.py}, their exact outputs, and build instructions. The program checked all 6,885 instances in the stated finite domain, with 1,215 nonempty cases; the tests supplement the proof through complete enumeration in that domain.
+
+\section*{Generative AI disclosure}
+OpenAI Codex agents contributed substantially to source discovery, literature synthesis, and mathematical exposition.
+
+\begin{thebibliography}{99}
+\bibitem{release}
+OpenAI.
+\emph{OpenAI mathematics release: repository README}.
+2026.
+\repourl{README.md}{Frozen repository snapshot}, accessed 7 October 2026.
+
+\bibitem{oaiMatching}
+OpenAI.
+\emph{A Fully Polynomial Randomized Approximation Scheme for Perfect Matchings in General Graphs}.
+OpenAI Math Release preprint, 23 September 2026.
+\repourl{preprints/A-Fully-Polynomial-Randomized-Approximation-Scheme-for-Perfect-Matchings-in-General-Graphs-September-23-2026/main.pdf}{Frozen manuscript}.
+
+\bibitem{oaiBases}
+OpenAI.
+\emph{Approximate counting of common bases of two matroids}.
+OpenAI Math Release preprint, 23 September 2026.
+\repourl{preprints/Approximate-counting-of-common-bases-of-two-matroids-September-23-2026/main.pdf}{Frozen manuscript}.
+
+\bibitem{oaiPolymatroids}
+OpenAI.
+\emph{An FPRAS for Common Integer Polymatroid Bases with Binary Capacities}.
+OpenAI Math Release preprint, 5 October 2026.
+\repourl{preprints/An-FPRAS-for-Common-Integer-Polymatroid-Bases-with-Binary-Capacities-October-5-2026/polymatroid-fpras.pdf}{Frozen manuscript}.
+
+\bibitem{oaiBoundedTables}
+OpenAI.
+\emph{An FPRAS for Cell-Bounded Contingency Tables}.
+OpenAI Math Release preprint, 24 September 2026.
+\repourl{preprints/An-FPRAS-for-Cell-Bounded-Contingency-Tables-September-24-2026/main.pdf}{Frozen manuscript}.
+
+\bibitem{oaiTables}
+OpenAI.
+\emph{Exact Uniform Sampling of Contingency Tables with Arbitrary Margins}.
+OpenAI Math Release preprint, 24 September 2026.
+\repourl{preprints/Exact-Uniform-Sampling-of-Contingency-Tables-with-Arbitrary-Margins-September-24-2026/main.pdf}{Frozen manuscript}.
+
+\bibitem{oaiSwitch}
+OpenAI.
+\emph{Polynomial mixing of the switch chain for every graphical degree sequence}.
+OpenAI Math Release preprint, 25 September 2026.
+\repourl{preprints/Polynomial-Mixing-of-the-Switch-Chain-for-Every-Graphical-Degree-Sequence-September-25-2026/main.pdf}{Frozen manuscript}.
+
+\bibitem{scope113}
+OpenAI.
+\emph{Approximate counting and entropy of perfect matchings: Lean formalization scope}.
+2026.
+\repourl{lean/docs/113.md}{Family 113 scope document}, accessed 7 October 2026.
+
+\bibitem{scope114}
+OpenAI.
+\emph{Approximate counting of common integer polymatroid bases: Lean formalization scope}.
+2026.
+\repourl{lean/docs/114.md}{Family 114 scope document}, accessed 7 October 2026.
+
+\bibitem{scope115}
+OpenAI.
+\emph{Sampling and counting contingency tables with arbitrary margins: Lean formalization scope}.
+2026.
+\repourl{lean/docs/115.md}{Family 115 scope document}, accessed 7 October 2026.
+
+\bibitem{scope131}
+OpenAI.
+\emph{Rapid mixing of graph switches for every degree sequence: Lean formalization scope}.
+2026.
+\repourl{lean/docs/131.md}{Family 131 scope document}, accessed 7 October 2026.
+
+\bibitem{comparator}
+OpenAI.
+\emph{Comparator challenges: checking instructions}.
+2026.
+\repourl{lean/ComparatorChallenges/README.md}{Frozen checking instructions}, accessed 7 October 2026.
+
+\bibitem{JVV1986}
+M.~R. Jerrum, L.~G. Valiant, and V.~V. Vazirani.
+Random generation of combinatorial structures from a uniform distribution.
+\emph{Theoretical Computer Science}, 43:169--188, 1986.
+\doi{10.1016/0304-3975(86)90174-X}.
+
+\bibitem{JSV2004}
+M.~Jerrum, A.~Sinclair, and E.~Vigoda.
+A polynomial-time approximation algorithm for the permanent of a matrix with nonnegative entries.
+\emph{Journal of the ACM}, 51(4):671--697, 2004.
+\doi{10.1145/1008731.1008738}.
+
+\bibitem{ALOV2024}
+N.~Anari, K.~Liu, S.~Oveis Gharan, and C.~Vinzant.
+Log-concave polynomials II: High-dimensional walks and an FPRAS for counting bases of a matroid.
+\emph{Annals of Mathematics}, 199(1):259--299, 2024.
+\doi{10.4007/annals.2024.199.1.4}.
+
+\bibitem{AOV2021}
+N.~Anari, S.~Oveis Gharan, and C.~Vinzant.
+Log-concave polynomials, I: Entropy and a deterministic approximation algorithm for counting bases of matroids.
+\emph{Duke Mathematical Journal}, 170(16):3459--3504, 2021.
+\doi{10.1215/00127094-2020-0091}.
+
+\bibitem{BH2020}
+P.~Br\"and\'en and J.~Huh.
+Lorentzian polynomials.
+\emph{Annals of Mathematics}, 192(3):821--891, 2020.
+\doi{10.4007/annals.2020.192.3.4}.
+
+\bibitem{SVW2017}
+D.~\v{S}tefankovi\v{c}, E.~Vigoda, and J.~Wilmes.
+On Counting Perfect Matchings in General Graphs.
+\href{https://arxiv.org/abs/1712.07504v1}{arXiv:1712.07504v1}, submitted 20 December 2017.
+
+\bibitem{DKM1997}
+M.~Dyer, R.~Kannan, and J.~Mount.
+Sampling contingency tables.
+\emph{Random Structures \& Algorithms}, 10(4):487--506, 1997.
+\doi{10.1002/(SICI)1098-2418(199707)10:4<487::AID-RSA4>3.0.CO;2-Q}.
+
+\bibitem{Morris2002}
+B.~J. Morris.
+Improved bounds for sampling contingency tables.
+\emph{Random Structures \& Algorithms}, 21(2):135--146, 2002.
+\doi{10.1002/rsa.10049}.
+
+\bibitem{KM2006}
+S.~Kijima and T.~Matsui.
+Polynomial time perfect sampling algorithm for two-rowed contingency tables.
+\emph{Random Structures \& Algorithms}, 29(2):243--256, 2006.
+\doi{10.1002/rsa.20087}.
+See also \href{https://www.keisu.t.u-tokyo.ac.jp/data/2003/METR03-15.pdf}{technical report METR 2003-15} for the update pseudocode.
+
+\bibitem{Dyer2003}
+M.~Dyer.
+Approximate counting by dynamic programming.
+In \emph{Proceedings of the 35th Annual ACM Symposium on Theory of Computing},
+pages 693--699, 2003.
+\doi{10.1145/780542.780643}.
+
+\bibitem{Gopalan2011}
+P.~Gopalan, A.~Klivans, R.~Meka, D.~\v{S}tefankovi\v{c}, S.~Vempala, and E.~Vigoda.
+An FPTAS for \#Knapsack and Related Counting Problems.
+In \emph{2011 IEEE 52nd Annual Symposium on Foundations of Computer Science},
+pages 817--826, 2011.
+\doi{10.1109/FOCS.2011.32}.
+
+\bibitem{MH2013}
+J.~W. Miller and M.~T. Harrison.
+Exact sampling and counting for fixed-margin matrices.
+\emph{Annals of Statistics}, 41(3):1569--1592, 2013.
+\doi{10.1214/13-AOS1131}.
+
+\bibitem{AGW2024}
+A.~Arman, P.~Gao, and N.~Wormald.
+Linear-time uniform generation of random sparse contingency tables with specified marginals.
+\emph{Annals of Applied Probability}, 34(2):2036--2064, 2024.
+\doi{10.1214/23-AAP2013}.
+
+\bibitem{DG2000}
+M.~Dyer and C.~Greenhill.
+Polynomial-time counting and sampling of two-rowed contingency tables.
+\emph{Theoretical Computer Science}, 246(1--2):265--278, 2000.
+\doi{10.1016/S0304-3975(99)00136-X}.
+
+\bibitem{CD2003}
+M.~Cryan and M.~Dyer.
+A polynomial-time algorithm to approximately count contingency tables when the number of rows is constant.
+\emph{Journal of Computer and System Sciences}, 67(2):291--310, 2003.
+\doi{10.1016/S0022-0000(03)00014-X}.
+
+\bibitem{CDR2010}
+M.~Cryan, M.~Dyer, and D.~Randall.
+Approximately counting integral flows and cell-bounded contingency tables.
+\emph{SIAM Journal on Computing}, 39(7):2683--2703, 2010.
+\doi{10.1137/060650544}.
+
+\bibitem{BBV2007}
+I.~Bez\'akov\'a, N.~Bhatnagar, and E.~Vigoda.
+Sampling binary contingency tables with a greedy start.
+\emph{Random Structures \& Algorithms}, 30(1--2):168--205, 2007.
+\doi{10.1002/rsa.20155}.
+
+\bibitem{Greenhill2021}
+C.~Greenhill.
+Generating graphs randomly.
+In \emph{Surveys in Combinatorics 2021}, London Mathematical Society Lecture Note Series, volume 470, pages 133--186.
+Cambridge University Press, 2021.
+\doi{10.1017/9781009036214.005}.
+See also the author's correction and reference update on
+\href{https://web.maths.unsw.edu.au/~csg/publications.html}{her publication page}.
+
+\bibitem{Unified2022}
+P.~L. Erd\H{o}s, C.~Greenhill, T.~R. Mezei, I.~Mikl\'os, D.~Solt\'esz, and L.~Soukup.
+The mixing time of switch Markov chains: A unified approach.
+\emph{European Journal of Combinatorics}, 99:103421, 2022.
+\doi{10.1016/j.ejc.2021.103421}.
+
+\bibitem{FQW2026}
+W.~Fu, Q.~Qin, and G.~Wang.
+Spectral gap for the binary fixed-margin swap chain.
+\href{https://arxiv.org/abs/2606.22636v2}{arXiv:2606.22636v2}, revised 13 July 2026.
+
+\bibitem{ChenLiu2026}
+X.~Chen and K.~Liu.
+An FPRAS for Counting Common Bases of Two Matroids.
+\href{https://arxiv.org/abs/2610.06724v1}{arXiv:2610.06724v1}, submitted 5 October 2026.
+
+\bibitem{GLMP2024}
+A.~G\"obel, J.~Liu, P.~Manurangsi, and M.~Pappik.
+Perfect sampling from rapidly mixing Markov chains.
+\href{https://arxiv.org/abs/2410.00882v2}{arXiv:2410.00882v2}, revised 6 December 2024.
+
+\bibitem{Edmonds2003}
+J.~Edmonds.
+Submodular functions, matroids, and certain polyhedra.
+In M.~J\"unger, G.~Reinelt, and G.~Rinaldi, editors,
+\emph{Combinatorial Optimization---Eureka, You Shrink!},
+Lecture Notes in Computer Science, volume 2570, pages 11--26.
+Springer, Berlin, Heidelberg, 2003.
+\doi{10.1007/3-540-36478-1_2}.
+
+\bibitem{Patefield1981}
+W.~M. Patefield.
+Algorithm AS 159: An efficient method of generating random \(R\times C\) tables with given row and column totals.
+\emph{Applied Statistics}, 30(1):91--97, 1981.
+\doi{10.2307/2346669}.
+
+\bibitem{ScipyRandomTable}
+The SciPy community.
+\emph{scipy.stats.random\_table}.
+SciPy v1.18.0 reference manual,
+\href{https://docs.scipy.org/doc/scipy-1.18.0/reference/generated/scipy.stats.random_table.html}{distribution and algorithm documentation},
+accessed 7 October 2026.
+
+\bibitem{Hoeffding1963}
+W.~Hoeffding.
+Probability inequalities for sums of bounded random variables.
+\emph{Journal of the American Statistical Association}, 58(301):13--30, 1963.
+\doi{10.1080/01621459.1963.10500830}.
+
+\bibitem{LP2017}
+D.~A. Levin and Y.~Peres, with contributions by E.~L. Wilmer.
+\emph{Markov Chains and Mixing Times}, second edition.
+American Mathematical Society, 2017.
+\href{https://pages.uoregon.edu/dlevin/MARKOV/mcmt2e.pdf}{Author-hosted text}.
+\end{thebibliography}
+\end{document}

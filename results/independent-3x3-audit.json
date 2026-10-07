@@ -1,0 +1,20 @@
+{
+  "additional_controls": {
+    "binary_permutations": 6,
+    "six_cycle": 2
+  },
+  "cap_values": [
+    0,
+    1,
+    2,
+    1073741825
+  ],
+  "dimension": "3 by 3",
+  "independent_cases": 100,
+  "max_count": 2,
+  "nonempty": 71,
+  "seed": 20261007,
+  "status": "all direct sets equal all-subset common-base sets",
+  "total_values": "0..3",
+  "vector_enumeration": "all weak compositions of total; no cell-cap pruning"
+}

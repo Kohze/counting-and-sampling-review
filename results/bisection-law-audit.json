@@ -1,0 +1,328 @@
+{
+  "all_checks_passed": true,
+  "audit": "exact finite output laws for interval bisection",
+  "cases": [
+    {
+      "case": "three_states_ideal",
+      "checks_passed": true,
+      "coin_bits_per_branch": null,
+      "depth_bound": 8,
+      "failure_bound": "0/1",
+      "failure_parameter_per_counter": "0/1",
+      "failure_probability": "0/1",
+      "output_law": [
+        {
+          "probability": "1/3",
+          "state": [
+            0,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "probability": "1/3",
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "probability": "1/3",
+          "state": [
+            2,
+            0,
+            0,
+            2
+          ]
+        }
+      ],
+      "relative_tolerance": "0/1",
+      "replacement_tv": "0/1",
+      "states": 3,
+      "tv": "0/1",
+      "tv_bound": "0/1",
+      "worst_local_tv": "0/1"
+    },
+    {
+      "case": "three_states_K5",
+      "checks_passed": true,
+      "coin_bits_per_branch": 5,
+      "depth_bound": 8,
+      "failure_bound": "0/1",
+      "failure_parameter_per_counter": "0/1",
+      "failure_probability": "0/1",
+      "output_law": [
+        {
+          "probability": "21/64",
+          "state": [
+            0,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "probability": "21/64",
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "probability": "11/32",
+          "state": [
+            2,
+            0,
+            0,
+            2
+          ]
+        }
+      ],
+      "relative_tolerance": "0/1",
+      "replacement_tv": "1/96",
+      "states": 3,
+      "tv": "1/96",
+      "tv_bound": "1/4",
+      "worst_local_tv": "1/96"
+    },
+    {
+      "case": "three_states_K8",
+      "checks_passed": true,
+      "coin_bits_per_branch": 8,
+      "depth_bound": 8,
+      "failure_bound": "0/1",
+      "failure_parameter_per_counter": "0/1",
+      "failure_probability": "0/1",
+      "output_law": [
+        {
+          "probability": "85/256",
+          "state": [
+            0,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "probability": "85/256",
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "probability": "43/128",
+          "state": [
+            2,
+            0,
+            0,
+            2
+          ]
+        }
+      ],
+      "relative_tolerance": "0/1",
+      "replacement_tv": "1/384",
+      "states": 3,
+      "tv": "1/384",
+      "tv_bound": "1/32",
+      "worst_local_tv": "1/384"
+    },
+    {
+      "case": "three_states_relative",
+      "checks_passed": true,
+      "coin_bits_per_branch": 8,
+      "depth_bound": 8,
+      "failure_bound": "0/1",
+      "failure_parameter_per_counter": "0/1",
+      "failure_probability": "0/1",
+      "output_law": [
+        {
+          "probability": "2795/8192",
+          "state": [
+            0,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "probability": "2709/8192",
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "probability": "21/64",
+          "state": [
+            2,
+            0,
+            0,
+            2
+          ]
+        }
+      ],
+      "relative_tolerance": "1/64",
+      "replacement_tv": "193/24576",
+      "states": 3,
+      "tv": "193/24576",
+      "tv_bound": "5/32",
+      "worst_local_tv": "1/128"
+    },
+    {
+      "case": "three_states_controlled_failure",
+      "checks_passed": true,
+      "coin_bits_per_branch": 8,
+      "depth_bound": 8,
+      "failure_bound": "1/64",
+      "failure_parameter_per_counter": "1/1024",
+      "failure_probability": "4052066892840895352172670200632692356535/1393796574908163946345982392040522594123776",
+      "output_law": [
+        {
+          "probability": "1771357120537635884893670352815427/5192296858534827628530496329220096",
+          "state": [
+            0,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "probability": "458450030459638075739186097006475153066569/1393796574908163946345982392040522594123776",
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "probability": "23564277775052685/72057594037927936",
+          "state": [
+            2,
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "probability": "4052066892840895352172670200632692356535/1393796574908163946345982392040522594123776",
+          "state": "failure"
+        }
+      ],
+      "relative_tolerance": "1/64",
+      "replacement_tv": "44844794941460501480723356576445574684965/4181389724724491839037947176121567782371328",
+      "states": 3,
+      "tv": "44844794941460501480723356576445574684965/4181389724724491839037947176121567782371328",
+      "tv_bound": "11/64",
+      "worst_local_tv": "2352005/268435456"
+    },
+    {
+      "case": "unique_binary_controlled_failure",
+      "checks_passed": true,
+      "coin_bits_per_branch": 8,
+      "depth_bound": 4,
+      "failure_bound": "1/128",
+      "failure_parameter_per_counter": "1/1024",
+      "failure_probability": "30110556023003256251883272521135/5192296858534827628530496329220096",
+      "output_law": [
+        {
+          "probability": "5162186302511824372278613056698961/5192296858534827628530496329220096",
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "probability": "30110556023003256251883272521135/5192296858534827628530496329220096",
+          "state": "failure"
+        }
+      ],
+      "relative_tolerance": "1/64",
+      "replacement_tv": "0/1",
+      "states": 1,
+      "tv": "30110556023003256251883272521135/5192296858534827628530496329220096",
+      "tv_bound": "11/128",
+      "worst_local_tv": "390019/268435456"
+    },
+    {
+      "case": "two_states_relative",
+      "checks_passed": true,
+      "coin_bits_per_branch": 8,
+      "depth_bound": 6,
+      "failure_bound": "0/1",
+      "failure_parameter_per_counter": "0/1",
+      "failure_probability": "0/1",
+      "output_law": [
+        {
+          "probability": "65/128",
+          "state": [
+            0,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "probability": "63/128",
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ]
+        }
+      ],
+      "relative_tolerance": "1/64",
+      "replacement_tv": "1/128",
+      "states": 2,
+      "tv": "1/128",
+      "tv_bound": "15/128",
+      "worst_local_tv": "1/128"
+    },
+    {
+      "case": "zero_total_unique",
+      "checks_passed": true,
+      "coin_bits_per_branch": 8,
+      "depth_bound": 0,
+      "failure_bound": "0/1",
+      "failure_parameter_per_counter": "0/1",
+      "failure_probability": "0/1",
+      "output_law": [
+        {
+          "probability": "1/1",
+          "state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "relative_tolerance": "0/1",
+      "replacement_tv": "0/1",
+      "states": 1,
+      "tv": "0/1",
+      "tv_bound": "0/1",
+      "worst_local_tv": "0/1"
+    },
+    {
+      "case": "empty_support",
+      "states": 0,
+      "status": "empty_detected"
+    }
+  ],
+  "counter_model": "prescribed fresh independent rational toy laws",
+  "not_an_FPRAS_implementation": true
+}
