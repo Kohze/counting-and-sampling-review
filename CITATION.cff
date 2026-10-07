@@ -2,7 +2,7 @@ cff-version: 1.2.0
 type: dataset
 message: "Please cite the manuscript when using this review or its scientific reproduction artifacts."
 title: "Approximate Counting and Uniform Sampling: A Critical Review of Matroid Intersections, Contingency Tables, and Graph Switch Chains"
-version: "1.0.0"
+version: "1.0.1"
 date-released: "2026-10-07"
 authors:
   - family-names: Gounder
@@ -26,6 +26,5 @@ preferred-citation:
       affiliation: Vaionex Corporation
   year: 2026
   month: 10
-  day: 7
   url: "https://github.com/Kohze/counting-and-sampling-review"
   notes: "Focused narrative review manuscript with accompanying finite-audit code and data."
