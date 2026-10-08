@@ -125,3 +125,10 @@ and inspection access. The original Python reproduction code under
 `reproduce/` is licensed under the
 [MIT License](reproduce/LICENSE). See [the licensing notice](LICENSE.md)
 for the scope of these separate terms.
+
+## Manuscript layout revision, 8 October 2026
+
+The current PDF and LaTeX include clearly separated table rows and additional
+space around tables. The mathematical content, bibliography, software, and
+scientific data are unchanged. The `paper-2026-10-08` release records this
+revision separately from earlier software and manuscript releases.

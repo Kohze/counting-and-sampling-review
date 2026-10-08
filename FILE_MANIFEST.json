@@ -2,49 +2,19 @@
   "algorithm": "sha256",
   "files": [
     {
-      "path": "main.tex",
-      "sha256": "1f3ed4e4b5492977a98fc4ec8277af218889f88a809cf73343b7e1e96064e2f4",
-      "bytes": 60532
+      "path": ".gitattributes",
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
     },
     {
-      "path": "counting-and-sampling-review.pdf",
-      "sha256": "2f404343e22145e66fc64c6e6710866c59fad5cd8d8cf21d78cc767f66d185e2",
-      "bytes": 472764
+      "path": ".github/workflows/verify.yml",
+      "sha256": "9582875b81b2cb81f6339bc82549717cce8f57a75683bfa283fccd8ddc99ebd8",
+      "bytes": 458
     },
     {
-      "path": "reproduce/table_reduction_audit.py",
-      "sha256": "cc78271f4f51647260a11e0d2e7a4402fceef3bf8d4d91b711fa0896d92ef8fb",
-      "bytes": 3347
-    },
-    {
-      "path": "reproduce/bisection_law_audit.py",
-      "sha256": "8408b741864b42a7fd03ccf9f228ccfb58881805de1ddf2f7ff6e8a218d32b88",
-      "bytes": 6361
-    },
-    {
-      "path": "reproduce/independent_3x3_audit.py",
-      "sha256": "c663063a57e5f739ba09ce3abd5351a653dd32508b83c4f95937f02269e3fefd",
-      "bytes": 1963
-    },
-    {
-      "path": "results/table-reduction-audit.json",
-      "sha256": "8cb9ff28642a809db02033ee418804320a54f23015e120c6f1c32e2a5c2f16b7",
-      "bytes": 294
-    },
-    {
-      "path": "results/bisection-law-audit.json",
-      "sha256": "00eb43e7fe85321f818be43a1dcbe7886ed7c3a97517f40dbaa1f2cca98249ba",
-      "bytes": 7628
-    },
-    {
-      "path": "references/release-recommended-citations.bib",
-      "sha256": "2d2e2a4020ffa08968fc6bbede012f84cc23a91fda38d0071391378475b961f4",
-      "bytes": 3169
-    },
-    {
-      "path": "README.md",
-      "sha256": "735b8855538fc4d83b40a472fd7c74acfa407174ca75ed84921dbd8b7a03439f",
-      "bytes": 5797
+      "path": ".gitignore",
+      "sha256": "20832a1ccb11763c376c7fae36298c0a81db011020ade52b3eab0484ed30c0c5",
+      "bytes": 305
     },
     {
       "path": "CITATION.cff",
@@ -57,9 +27,44 @@
       "bytes": 911
     },
     {
-      "path": ".gitignore",
-      "sha256": "20832a1ccb11763c376c7fae36298c0a81db011020ade52b3eab0484ed30c0c5",
-      "bytes": 305
+      "path": "README.md",
+      "sha256": "28dcbf4b1c44a2bfc63530ae6c3fe343b02a017b1bf06ef8515e0b16d8cc2748",
+      "bytes": 6274
+    },
+    {
+      "path": "audit/table-layout-revision.json",
+      "sha256": "3a1d8233a3d91f61fd565d1f022b04339515f417ee5b26162a0395461c6fa0a4",
+      "bytes": 693
+    },
+    {
+      "path": "counting-and-sampling-review.pdf",
+      "sha256": "88720b17bb6f24da3e196ee91fc92ca213745f488cb8f33820080e502dd230bc",
+      "bytes": 472925
+    },
+    {
+      "path": "main.tex",
+      "sha256": "d198c2039a343125a10cb9cc20a9a9aa109fa94be41b2fb49d0fb5de5f00825f",
+      "bytes": 61674
+    },
+    {
+      "path": "references/README.md",
+      "sha256": "c8e1435d908297ad3ca5d5ebabf197010f6a250fc0d6c3a8eab33bce7322aeee",
+      "bytes": 1679
+    },
+    {
+      "path": "references/citation-evidence.csv",
+      "sha256": "2ec15d8f6be2a4efe9ba224bbb1b1a1337730507eb074e0832e50e0ff58afb65",
+      "bytes": 23856
+    },
+    {
+      "path": "references/citation-evidence.json",
+      "sha256": "6aebe4101e351f7afb88fec4567baf39a22c259ddab1733741f45cfe46bdc3d6",
+      "bytes": 82711
+    },
+    {
+      "path": "references/release-recommended-citations.bib",
+      "sha256": "2d2e2a4020ffa08968fc6bbede012f84cc23a91fda38d0071391378475b961f4",
+      "bytes": 3169
     },
     {
       "path": "reproduce/LICENSE",
@@ -67,9 +72,24 @@
       "bytes": 1070
     },
     {
+      "path": "reproduce/bisection_law_audit.py",
+      "sha256": "8408b741864b42a7fd03ccf9f228ccfb58881805de1ddf2f7ff6e8a218d32b88",
+      "bytes": 6361
+    },
+    {
       "path": "reproduce/export_data.py",
       "sha256": "213da9487fbf5d8cacc14bb598eea4a641102b7b2fe2f347cae5485f8b27e195",
       "bytes": 6456
+    },
+    {
+      "path": "reproduce/independent_3x3_audit.py",
+      "sha256": "c663063a57e5f739ba09ce3abd5351a653dd32508b83c4f95937f02269e3fefd",
+      "bytes": 1963
+    },
+    {
+      "path": "reproduce/table_reduction_audit.py",
+      "sha256": "cc78271f4f51647260a11e0d2e7a4402fceef3bf8d4d91b711fa0896d92ef8fb",
+      "bytes": 3347
     },
     {
       "path": "reproduce/verify_repo.py",
@@ -82,24 +102,9 @@
       "bytes": 1910
     },
     {
-      "path": "references/README.md",
-      "sha256": "c8e1435d908297ad3ca5d5ebabf197010f6a250fc0d6c3a8eab33bce7322aeee",
-      "bytes": 1679
-    },
-    {
-      "path": "results/table-reduction-instances.csv",
-      "sha256": "55c692e81a5d0e246c2eca952bdef64546c6401dbd35d964e1638f3f0ce22ced",
-      "bytes": 157296
-    },
-    {
-      "path": "results/independent-3x3-instances.csv",
-      "sha256": "0b9e7899b88c97977b3092c92a894cd3d4c616f0499cead5093dbbdb5566b93a",
-      "bytes": 5816
-    },
-    {
-      "path": "results/independent-3x3-audit.json",
-      "sha256": "9662c5998e82adbbabdb2328ce19a8cb929ea80c4c651d288fe98af114478290",
-      "bytes": 422
+      "path": "results/bisection-law-audit.json",
+      "sha256": "00eb43e7fe85321f818be43a1dcbe7886ed7c3a97517f40dbaa1f2cca98249ba",
+      "bytes": 7628
     },
     {
       "path": "results/bisection-law-summary.csv",
@@ -117,24 +122,25 @@
       "bytes": 1695
     },
     {
-      "path": "references/citation-evidence.json",
-      "sha256": "d5a1910e334d045dafcd49aae2e17aca1a4c54c884dd0638fd0bcaea07a587bb",
-      "bytes": 80986
+      "path": "results/independent-3x3-audit.json",
+      "sha256": "9662c5998e82adbbabdb2328ce19a8cb929ea80c4c651d288fe98af114478290",
+      "bytes": 422
     },
     {
-      "path": "references/citation-evidence.csv",
-      "sha256": "2ec15d8f6be2a4efe9ba224bbb1b1a1337730507eb074e0832e50e0ff58afb65",
-      "bytes": 23856
+      "path": "results/independent-3x3-instances.csv",
+      "sha256": "0b9e7899b88c97977b3092c92a894cd3d4c616f0499cead5093dbbdb5566b93a",
+      "bytes": 5816
     },
     {
-      "path": ".gitattributes",
-      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
-      "bytes": 8
+      "path": "results/table-reduction-audit.json",
+      "sha256": "8cb9ff28642a809db02033ee418804320a54f23015e120c6f1c32e2a5c2f16b7",
+      "bytes": 294
     },
     {
-      "path": ".github/workflows/verify.yml",
-      "sha256": "9582875b81b2cb81f6339bc82549717cce8f57a75683bfa283fccd8ddc99ebd8",
-      "bytes": 458
+      "path": "results/table-reduction-instances.csv",
+      "sha256": "55c692e81a5d0e246c2eca952bdef64546c6401dbd35d964e1638f3f0ce22ced",
+      "bytes": 157296
     }
-  ]
+  ],
+  "release_revision": "paper-2026-10-08"
 }

@@ -89,6 +89,9 @@ Also within the cutoff, Chen and Liu's 5 October preprint states an independence
 Table~\ref{tab:evidence} compares the release's mathematical statements with the scope identified in its Lean documentation. Each statement retains the assumptions of its original manuscript.
 
 \begingroup\small
+\setlength{\LTpre}{18pt}
+\setlength{\LTpost}{22pt}
+\setlength{\LTcapwidth}{\textwidth}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.29\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}@{}}
 \caption{Selected claims, runtime models, and documented formal scope.}\label{tab:evidence}\\
 \toprule
@@ -99,33 +102,39 @@ Problem and manuscript & Stated computational guarantee & Selected documented sc
 Problem and manuscript & Stated computational guarantee & Selected documented scope and boundary\\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 General-graph perfect matchings \cite[Theorem~1.1]{oaiMatching}
 &
 Relative approximation with polynomial work on every random tape; exact zero output on infeasible instances.
 &
-Family 113 documents an FPRAS for finite simple undirected graphs. Its additional entropy and triangle-expansion statements have their own scope; the paper's sharp global face-dimension bound is not part of the selected triangle statement \cite{scope113}.\\[4pt]
+Family 113 documents an FPRAS for finite simple undirected graphs. Its additional entropy and triangle-expansion statements have their own scope; the paper's sharp global face-dimension bound is not part of the selected triangle statement \cite{scope113}.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Common matroid bases \cite[Theorem~1.1]{oaiBases}
 &
 FPRAS with polynomially bounded oracle calls and bit operations on every tape.
 &
-Family 114 specifies two equal-rank matroids on an enumerated ground set, with independence oracles. This is a count of common subsets, with zero returned on every execution when empty \cite{scope114}.\\[4pt]
+Family 114 specifies two equal-rank matroids on an enumerated ground set, with independence oracles. This is a count of common subsets, with zero returned on every execution when empty \cite{scope114}.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Common integer polymatroid bases \cite[Theorem~1.1]{oaiPolymatroids}
 &
 FPRAS with binary rank data and exact rank-value oracles; every integer vector has weight one.
 &
-The family 114 heading mentions integer polymatroids, but its linked paper and statement concern matroid bases. It does not document formal coverage of the 5 October binary-capacity extension \cite{scope114}.\\[4pt]
+The family 114 heading mentions integer polymatroids, but its linked paper and statement concern matroid bases. It does not document formal coverage of the 5 October binary-capacity extension \cite{scope114}.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Cell-bounded integer tables \cite[Theorem~1.1; Section~8]{oaiBoundedTables}
 &
 FPRAS with both dimensions variable and margins and bounds binary encoded; Section~8 also derives bounded-time approximate uniform generation.
 &
-Family 115 includes this counting guarantee, including zero bounds and exact zero output when infeasible. Its exact-sampling guarantee concerns tables without cell bounds \cite{scope115}.\\[4pt]
+Family 115 includes this counting guarantee, including zero bounds and exact zero output when infeasible. Its exact-sampling guarantee concerns tables without cell bounds \cite{scope115}.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Unrestricted integer tables \cite[Theorems~1.1 and~6.4]{oaiTables}
 &
 Exact uniform sampling in expected polynomial bit time; a companion bounded-time sampler has TV error at most \(2^{-k}\).
 &
-Family 115 documents both sampling statements for nonnegative integer tables with arbitrary equal-total margins. Individual cell restrictions are not included in the sampling scope \cite{scope115}.\\[4pt]
+Family 115 documents both sampling statements for nonnegative integer tables with arbitrary equal-total margins. Individual cell restrictions are not included in the sampling scope \cite{scope115}.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Simple-undirected graph switches \cite[Theorem~1.1; Corollary~1.2]{oaiSwitch}
 &
 For the specified lazy four-vertex chain, \(t_{\rm mix}(1/4)\leq2n^8\), \(n\geq4\); the manuscript also states an exact sampler in expected polynomial time.
@@ -142,6 +151,9 @@ The stated guarantees extend theoretical coverage to general input families. The
 The manuscripts use distinct walk architectures. Table~\ref{tab:mechanisms} compares the mechanisms described in their proofs, with attention to state representations and the quantities controlled by each argument.
 
 \begingroup\small
+\setlength{\LTpre}{18pt}
+\setlength{\LTpost}{22pt}
+\setlength{\LTcapwidth}{\textwidth}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.43\textwidth}>{\raggedright\arraybackslash}p{0.29\textwidth}@{}}
 \caption{Manuscript mechanisms and computational costs beyond endpoint guarantees.}\label{tab:mechanisms}\\
 \toprule
@@ -152,33 +164,39 @@ Family & Obstruction and mechanism & Consequence for an implementation\\
 Family & Obstruction and mechanism & Consequence for an implementation\\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 Perfect matchings
 &
 The ordinary perfect/near-perfect state space can bottleneck. The manuscript balances hole ratios, enlarges a colored graph, and uses several matching coordinates with cycle exchanges and an interaction-energy argument \cite[Section~1.2]{oaiMatching}.
 &
-The lifted product law and its observables must be preserved; replacing it by the familiar single-coordinate chain does not inherit the claimed gap.\\[4pt]
+The lifted product law and its observables must be preserved; replacing it by the familiar single-coordinate chain does not inherit the claimed gap.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Common matroid bases
 &
 A paired-ground-set encoding is annealed through positive rank-deficiency weights. Empty/full pair defects balance types; quadratic transport controls the transversal trace and selected ratio observables \cite[Section~1, proof strategy]{oaiBases}.
 &
-Exact independence queries, adaptive multiplier estimates, and restart caps are part of the guarantee; it is not a generic gap theorem for every defect observable.\\[4pt]
+Exact independence queries, adaptive multiplier estimates, and restart caps are part of the guarantee; it is not a generic gap theorem for every defect observable.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Cell-bounded tables
 &
 Large entries are integrated through forest completion weights; only bounded small coordinates are expanded. Reciprocal multiplicity weights and two quadratic extensions support the paired transport argument \cite[Sections~1.2 and~4--7]{oaiBoundedTables}.
 &
-Approximate completion weights, bin sizes and labelled multiplicities must be included in the actual output law.\\[4pt]
+Approximate completion weights, bin sizes and labelled multiplicities must be included in the actual output law.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Integer polymatroid bases
 &
 Polynomial-range part totals are retained as discrete variables while other coordinates use weighted-volume approximation; the construction avoids expansion into all capacity units \cite[Section~1]{oaiPolymatroids}.
 &
-Exact rank-value access and its internal cost remain separate from the external binary arithmetic bound.\\[4pt]
+Exact rank-value access and its internal cost remain separate from the external binary arithmetic bound.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Unrestricted tables
 &
 Padding and auxiliary defect states enable completion updates. A finite dyadic law is computed for a rare residual-correction branch \cite[Sections~2 and~6]{oaiTables}.
 &
-Per-trial work, repetitions, exact completion arithmetic and law-tabulation cost all matter; expected exact work is not a per-run cap.\\[4pt]
+Per-trial work, repetitions, exact completion arithmetic and law-tabulation cost all matter; expected exact work is not a per-run cap.\\
+\specialrule{0.3pt}{7pt}{7pt}
 Simple graph switches
 &
 Symmetry-preserving neighbor redistributions are compared with local switches; conditional variance estimates control their interactions \cite[Sections~2--6]{oaiSwitch}.

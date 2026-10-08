@@ -1,0 +1,17 @@
+{
+  "paper": "counting-and-sampling",
+  "table_count": 2,
+  "row_separator_count": 10,
+  "previous_source_sha256": "1f3ed4e4b5492977a98fc4ec8277af218889f88a809cf73343b7e1e96064e2f4",
+  "current_source_sha256": "d198c2039a343125a10cb9cc20a9a9aa109fa94be41b2fb49d0fb5de5f00825f",
+  "scientific_content_unchanged": true,
+  "date": "2026-10-07",
+  "changes": [
+    "Thin horizontal dividers between every pair of data rows",
+    "Additional row padding and whitespace around tables",
+    "Continuation headers retained; duplicate boundary rule removed"
+  ],
+  "pdf_sha256": "88720b17bb6f24da3e196ee91fc92ca213745f488cb8f33820080e502dd230bc",
+  "pages": 17,
+  "status": "passed"
+}

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "evidence_date": "2026-10-07",
   "paper": "main.tex",
-  "source_sha256": "1f3ed4e4b5492977a98fc4ec8277af218889f88a809cf73343b7e1e96064e2f4",
-  "source_bytes": 60532,
+  "source_sha256": "d198c2039a343125a10cb9cc20a9a9aa109fa94be41b2fb49d0fb5de5f00825f",
+  "source_bytes": 61674,
   "audit_type": "AI-assisted bibliographic identity and cited-result scope assessment",
   "method": "Primary publisher records, original papers and author-hosted texts or publication records, versioned arXiv metadata/content, official software documentation, and commit-pinned repository files. Publisher-deposited metadata provides corroboration. The ledger records the source statements and restrictions used in the review.",
   "scope": "Source identity, metadata, cited roles and documented statement scope. Full source-proof certification is a distinct form of evidence.",
@@ -1553,5 +1553,6 @@
       "source_statement_scope": "Author-hosted second-edition text Chapter 12: laziness identifies ordinary with absolute gap, spectral contraction plus Cauchy–Schwarz yields displayed bound. Source supports theoretical bound, not transition-cost claim.",
       "limitations": []
     }
-  ]
+  ],
+  "layout_revision": "2026-10-08 public release: table dividers and spacing; mathematical content and cited sources unchanged. See audit/table-layout-revision.json."
 }
